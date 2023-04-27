@@ -1,0 +1,122 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<head>
+    <meta charset="UTF-8">
+
+    <style type="text/css">
+        body {
+            background-color: burlywood;
+            font-family: Arial, sans-serif;
+        }
+
+        .nomdusite {
+            color: wheat;
+        }
+
+        .btn {
+            font-size: 2em;
+            background-color: beige;
+            padding: 10px 200px;
+            display: inline-block;
+            margin-top: 20px;
+            text-transform: uppercase;
+            text-decoration: none;
+            letter-spacing: 2px;
+            transition: 0.5s;
+            margin-left: 10px;
+        }
+
+            .btn:hover {
+                letter-spacing: 4px;
+                text-transform: capitalize;
+            }
+
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #333;
+            overflow: hidden;
+            left: 0;
+            right: 0;
+            height: 50px;
+        }
+
+            .navbar ul {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+            .navbar li {
+                float: left;
+            }
+
+                .navbar li a {
+                    display: block;
+                    color: white;
+                    text-align: center;
+                    padding: 14px 16px;
+                    text-decoration: none;
+                    margin-left: 10px;
+                    margin-right: 10px;
+                }
+
+                    .navbar li a:hover {
+                        background-color: #111;
+                    }
+
+    </style>
+
+</head>
+
+<body>
+    <header>
+
+        <nav class="navbar">
+            <ul>
+                <li> <h1 class="nomdusite"><strong>RFID WEBSITE</strong></h1></li>
+                <li><a href="#">Historique/Sauvegarde</a></li>
+                <li><a href="#">classification</a></li>
+                <li><a href="#">Comparatif des résultats</a></li>
+
+            </ul>
+        </nav>
+    </header>
+    <p> <br><br><br></p>
+
+    <div class="text-center">
+        <h1 class="display-4"><u>Welcome</u></h1>
+        <p> <br><br><br></p>
+
+        <h2> <strong>Veuillez appuyez sur le bouton de votre choix<br>pour procéder au test</strong></h2>
+        <p> <br><br><br <br><br><br> <br><br><br</p>
+
+        <div class="btn">
+
+            <input type="submit" name="envoi" value="Méthode analytique" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="submit" name="envoi" value="Méthode predictive" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;">
+
+
+        </div>
+
+
+
+        <p><br><br><br></p>
+
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+
+
+</body>
