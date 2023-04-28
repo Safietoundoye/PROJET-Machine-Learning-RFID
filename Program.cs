@@ -35,11 +35,11 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
-using (var serviceScope = app.Services.GetService<IServiceScopeFactory>().CreateScope())
-{
-    var context = serviceScope.ServiceProvider.GetRequiredService<PROJETContext>();
-    context.Database.EnsureDeleted();
-    context.Database.EnsureCreated();
-}
+//using (var serviceScope = app.Services.GetService<IServiceScopeFactory>().CreateScope())
+//{
+//var context = serviceScope.ServiceProvider.GetRequiredService<PROJETContext>();
+//context.Database.EnsureDeleted();
+//context.Database.EnsureCreated();
+//}
 
 app.Run();
