@@ -9,5 +9,13 @@ namespace PROJET.Data
             : base(options)
         {
         }
+        public DbSet<PROJET.Models.Résultat> Resultats { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Configuration de la base de données ici
+        }
+
     }
+
 }
