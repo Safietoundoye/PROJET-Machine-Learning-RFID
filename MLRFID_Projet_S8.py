@@ -220,6 +220,8 @@ plt.grid()
 # Ajout d'un titre au graphique
 plt.title('durations: Startup>Start, Start>Stop, Stop>Stopdown',size=16)
 
+# Affichage du graphique
+plt.show()
 
 
 

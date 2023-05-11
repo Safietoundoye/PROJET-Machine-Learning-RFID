@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "Page 3";
+}
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="Style.css">
+   
+</head>
+
+<header>
+
+    <h1 class="nomdusite"><strong>RFID WEBSITE</strong></h1>
+
+</header>
+<p> <br><br></p>
+
+<body>
+    
+  
+
+    <div class="text-center">
+        <h1 class="display-4"><u>Méthode 3</u></h1>
+        <p> <br><br></p>
+
+        <h2> <strong>Veuillez choisir vos hyperparamétres</strong></h2>
+        <p> <br><br> </p>
+
+       
+
+
+        <form method="post" action="#">
+            <label for="hyperparameter5">Hyperparamètre 1 :</label>
+            <input type="range" id="hyperparameter5" name="hyperparameter5" min="0" max="100" value="50">
+            
+            <p> <br><br> </p>
+            
+
+            <label for="hyperparameter6">Hyperparamètre 2 :</label>
+            <input type="range" id="hyperparameter6" name="hyperparameter6" min="0" max="100" value="50">
+            <p> <br><br></p>
+            <p> <button type="submit">Enregistrer</button>
+        </form>
+
+
+
+
+
+        <p> <br><br><br> </p>
+
+       <div class="btn">
+
+           <input class="dropbtn" type="submit" name="envoi" value="Retour"  onclick="window.location.href='@Url.Action("Index", "Home")'" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;">
+            
+        </div>
+
+        <p><br></p>
+    </div>
+       
+        
+</body>

@@ -12,55 +12,55 @@ namespace PROJET.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RésultatController : ControllerBase
+    public class ComparaisonsController : ControllerBase
     {
         private readonly PROJETContext _context;
 
-        public RésultatController(PROJETContext context)
+        public ComparaisonsController(PROJETContext context)
         {
             _context = context;
         }
 
-        // GET: api/Résultat
+        // GET: api/Comparaisons
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Résultat>>> GetRésultat()
+        public async Task<ActionResult<IEnumerable<Comparaison>>> GetComparaison()
         {
-          if (_context.Résultat == null)
+          if (_context.Comparaison == null)
           {
               return NotFound();
           }
-            return await _context.Résultat.ToListAsync();
+            return await _context.Comparaison.ToListAsync();
         }
 
-        // GET: api/Résultat/5
+        // GET: api/Comparaisons/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Résultat>> GetRésultat(int id)
+        public async Task<ActionResult<Comparaison>> GetComparaison(int id)
         {
-          if (_context.Résultat == null)
+          if (_context.Comparaison == null)
           {
               return NotFound();
           }
-            var résultat = await _context.Résultat.FindAsync(id);
+            var comparaison = await _context.Comparaison.FindAsync(id);
 
-            if (résultat == null)
+            if (comparaison == null)
             {
                 return NotFound();
             }
 
-            return résultat;
+            return comparaison;
         }
 
-        // PUT: api/Résultat/5
+        // PUT: api/Comparaisons/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutRésultat(int id, Résultat résultat)
+        public async Task<IActionResult> PutComparaison(int id, Comparaison comparaison)
         {
-            if (id != résultat.Id)
+            if (id != comparaison.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(résultat).State = EntityState.Modified;
+            _context.Entry(comparaison).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +68,7 @@ namespace PROJET.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RésultatExists(id))
+                if (!ComparaisonExists(id))
                 {
                     return NotFound();
                 }
@@ -81,44 +81,44 @@ namespace PROJET.Controllers
             return NoContent();
         }
 
-        // POST: api/Résultat
+        // POST: api/Comparaisons
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Résultat>> PostRésultat(Résultat résultat)
+        public async Task<ActionResult<Comparaison>> PostComparaison(Comparaison comparaison)
         {
-          if (_context.Résultat == null)
+          if (_context.Comparaison == null)
           {
-              return Problem("Entity set 'PROJETContext.Résultat'  is null.");
+              return Problem("Entity set 'PROJETContext.Comparaison'  is null.");
           }
-            _context.Résultat.Add(résultat);
+            _context.Comparaison.Add(comparaison);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetRésultat", new { id = résultat.Id }, résultat);
+            return CreatedAtAction("GetComparaison", new { id = comparaison.Id }, comparaison);
         }
 
-        // DELETE: api/Résultat/5
+        // DELETE: api/Comparaisons/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteRésultat(int id)
+        public async Task<IActionResult> DeleteComparaison(int id)
         {
-            if (_context.Résultat == null)
+            if (_context.Comparaison == null)
             {
                 return NotFound();
             }
-            var résultat = await _context.Résultat.FindAsync(id);
-            if (résultat == null)
+            var comparaison = await _context.Comparaison.FindAsync(id);
+            if (comparaison == null)
             {
                 return NotFound();
             }
 
-            _context.Résultat.Remove(résultat);
+            _context.Comparaison.Remove(comparaison);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool RésultatExists(int id)
+        private bool ComparaisonExists(int id)
         {
-            return (_context.Résultat?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Comparaison?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

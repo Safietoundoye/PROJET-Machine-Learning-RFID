@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using PROJET.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace PROJET.Models
 {
@@ -14,7 +15,6 @@ namespace PROJET.Models
         {
             Heure = heure;
         }
-
-
+        //public ICollection<Comparaison>? Comparaisons { get; set; }
     }
 }
