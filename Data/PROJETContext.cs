@@ -14,7 +14,13 @@ namespace PROJET.Data
         {
         }
 
-        public DbSet<PROJET.Models.Résultat> Résultat { get; set; } = default!;
+        public DbSet<PROJET.Models.Comparaison> Comparaison { get; set; } = default!;
+
+        public DbSet<PROJET.Models.Methode> Methode { get; set; } = default!;
+
+        public DbSet<PROJET.Models.MethodeAnalytique> MethodeAnalytique { get; set; } = default!;
+
+        public DbSet<PROJET.Models.MethodeMachineLearning> MethodeMachineLearning { get; set; } = default!;
 
         public DbSet<PROJET.Models.Sauvegarde> Sauvegarde { get; set; } = default!;
     }

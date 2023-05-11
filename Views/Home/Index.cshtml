@@ -4,80 +4,9 @@
 
 <head>
     <meta charset="UTF-8">
-
-    <style type="text/css">
-        body {
-            background-color: burlywood;
-            font-family: Arial, sans-serif;
-        }
-
-        .nomdusite {
-            color: wheat;
-        }
-
-        .btn {
-            font-size: 2em;
-            background-color: beige;
-            padding: 10px 200px;
-            display: inline-block;
-            margin-top: 20px;
-            text-transform: uppercase;
-            text-decoration: none;
-            letter-spacing: 2px;
-            transition: 0.5s;
-            margin-left: 10px;
-        }
-
-            .btn:hover {
-                letter-spacing: 4px;
-                text-transform: capitalize;
-            }
-
-
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: #333;
-            overflow: hidden;
-            left: 0;
-            right: 0;
-            height: 50px;
-        }
-
-            .navbar ul {
-                margin: 0;
-                padding: 0;
-                list-style: none;
-            }
-
-            .navbar li {
-                float: left;
-            }
-
-                .navbar li a {
-                    display: block;
-                    color: white;
-                    text-align: center;
-                    padding: 14px 16px;
-                    text-decoration: none;
-                    margin-left: 10px;
-                    margin-right: 10px;
-                }
-
-                    .navbar li a:hover {
-                        background-color: #111;
-                    }
-
-    </style>
-
+    <link rel="stylesheet" type="text/css" href="Style.css">
+    
+    <script src="site.js"></script>
 </head>
 
 <body>
@@ -103,21 +32,33 @@
         <p> <br><br><br> <br><br><br> <br><br> <br> </p>
     
 
-        <div class="btn">
+       <div class="btn">
 
-            <input type="submit" name="envoi" value="Méthode analytique" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="submit" name="envoi" value="Méthode predictive" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;">
+
+         
+         <input class="dropbtn" type="submit" name="envoi" value="Méthode analytique" id="analytique" onclick="window.location.href='@Url.Action("Page2", "Home")'" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;">
+               
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         
+         <input class="dropbtn" type="submit" name="envoi" value="Méthode predictive" id="predictive" onclick="afficher()" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;">
+
+           <div class="dropdown-content" id="myDropdown">
+            <a href="Home/Page3">Méthode 1</a>
+            <a href="Home/Page4">Méthode 2</a>
+            <a href="Home/Page5">Méthode 3</a>
+           </div>
 
 
         </div>
-
-    </div>
-
+       
         <p><br><br><br></p>
 
-        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+       
+    </div>
 
+  
+        <p><br><br><br></p>
 
-
+       
+        
 </body>

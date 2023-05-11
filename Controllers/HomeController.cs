@@ -15,7 +15,8 @@ namespace PROJET.Controllers
 
         public IActionResult Index()
         {
-            return View();
+             return View();
+            
         }
 
         public IActionResult Privacy()
@@ -28,5 +29,47 @@ namespace PROJET.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult Page2()
+         {
+            return View();
+        }
+
+        public IActionResult Page3()
+        {
+            return View();
+        }
+        public IActionResult Page4()
+        {
+            return View();
+        }
+
+        public IActionResult Page5()
+        {
+            return View();
+        }
+
+        //[HttpPost]
+        // public IActionResult SetHyperparameter(int hyperparameter)
+        // {
+        // Traiter la valeur de l'hyperparamètre
+        // return View();
+        //  }
+        [HttpPost]
+        public IActionResult Hyperparameter(MethodeMachineLearning model)
+        {
+            //int hyperparameter1Value = model.Hyperparameter1;
+           // int hyperparameter2Value = model.Hyperparameter2;
+
+            float Hyperparamétres = model.Hyperparamétres;
+           // Effectuer les traitements nécessaires en fonction des valeurs des hyperparamètres
+
+           // Rediriger l'utilisateur vers une autre vue ou une autre action
+            return RedirectToAction("Resultats");
+        }
+
+
+
+
     }
 }
