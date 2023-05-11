@@ -1,9 +1,19 @@
-﻿namespace PROJET.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace PROJET.Models
 {
     public class Sauvegarde
     {
-        public int Heure{ get; set; }
-        public int Date { get; set; }
+        public int Id { get; set; }
+        [Required]
+        public float ResultatTest { get; set; }
+      
+        public DateTime Heure { get; set; }
+
+        public Sauvegarde(DateTime heure)
+        {
+            Heure = heure;
+        }
 
 
     }
