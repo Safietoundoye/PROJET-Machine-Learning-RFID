@@ -53,7 +53,7 @@ namespace PROJET.Controllers
                 ViewBag.Result1 = result1;
             }
 
-            return View("Page3");
+            return View("ResultMethode1");
         }
 
 
