@@ -14,8 +14,16 @@
 
     <div class="text-center">
         <h1 class="display-4"><u>Méthode analytique</u></h1>
-        <h2><strong>Voici le résultat obtenu<br> à la suite de ce test</strong></h2>
+        <p> <br><br></p>
 
+        <h2> <strong>Voici le résultat obtenu<br> à la suite de ce test</strong></h2>
+
+
+        <h3>Result: @Html.Raw(ViewBag.Result)</h3>
+                    
+                
+        <p> <br><br><br> <br><br><br> </p>
+    
         <form method="post" action="/SaveResults">
             <label for="id">IdSauvegarde:</label>
             <input type="text" name="id" id="id"><br>
