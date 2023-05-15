@@ -4,7 +4,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>    options.UseSq
 using (var serviceScope = app.Services.GetService<IServiceScopeFactory>().CreateScope())
 {
 var context = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    context.Database.EnsureDeleted();
+   
     context.Database.EnsureCreated();
 }
 
