@@ -23,28 +23,40 @@ namespace PROJET.Controllers
         {
             using (var client = new HttpClient())
             {
-                var response = await client.GetAsync("http://localhost:5000/analytical");
+
+                var content = new StringContent(JsonConvert.SerializeObject(null), System.Text.Encoding.UTF8, "application/json");
+                var response = await client.PostAsync("http://localhost:5000/analytical", content);
                 var result = await response.Content.ReadAsStringAsync();
 
                 ViewBag.Result = result;
             }
 
-            return View("Index");
+            return View("Page2");
         }
 
         [HttpPost]
-        public async Task<IActionResult> AnalyticalWithParams()
+        public async Task<IActionResult> RFClassifier(string hyperparameter1, string hyperparameter2)
         {
             using (var client = new HttpClient())
             {
-                var response = await client.GetAsync("http://localhost:5000/analyticalWithParams");
-                var result = await response.Content.ReadAsStringAsync();
+                var requestData = new
+                {
+                   Hyperparameter1 =  hyperparameter1,
 
-                ViewBag.Result = result;
+                   Hyperparameter2 = hyperparameter2
+                };
+                
+                var content = new StringContent(JsonConvert.SerializeObject(requestData), System.Text.Encoding.UTF8, "application/json");
+                var response = await client.PostAsync("http://localhost:5000/RFClassifier", content);
+                var result1 = await response.Content.ReadAsStringAsync();
+
+                ViewBag.Result1 = result1;
             }
 
-            return View("Index");
+            return View("Page3");
         }
+
+
         public IActionResult Index()
         {
              return View();

@@ -28,20 +28,20 @@
        
 
 
-        <form method="post" action="#">
+        <form asp-action="RFClassifier" method="post">
             <label for="hyperparameter1">Hyperparamètre 1 :</label>
-            <input type="range" id="hyperparameter1" name="hyperparameter1" min="0" max="100" value="50">
+            <input type="range" id="hyperparameter1" name="hyperparameter1" min="50" max="200" value="50">
             
             <p> <br><br> </p>
             
 
             <label for="hyperparameter2">Hyperparamètre 2 :</label>
-            <input type="range" id="hyperparameter2" name="hyperparameter2" min="0" max="100" value="50">
+            <input type="range" id="hyperparameter2" name="hyperparameter2" min="5" max="15" value="50">
             <p><br><br></p>
             <p> <button type="submit">Enregistrer</button>
         </form>
 
-
+        <h3>Result: @Html.Raw(ViewBag.Result1)</h3>
 
 
 
