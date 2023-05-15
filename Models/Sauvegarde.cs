@@ -1,20 +1,27 @@
-﻿using PROJET.Models;
+﻿using NuGet.Packaging.Signing;
+using PROJET.Models;
 using System.ComponentModel.DataAnnotations;
+using static IronPython.Modules._ast;
 
 namespace PROJET.Models
 {
     public class Sauvegarde
     {
-        public int Id { get; set; }
+        [Key]
+        public int IdSauvegarde { get; set; }
         [Required]
-        public float ResultatTest { get; set; }
+        public float Accuracy { get; set; }
       
         public DateTime Heure { get; set; }
+        
+        public  Methode methode { get; set; }
 
-        public Sauvegarde(DateTime heure)
+        public ICollection<Histo_Hparam>? histoHparam { get; set; }
+
+        public Sauvegarde (DateTime heure)
         {
             Heure = heure;
         }
-        //public ICollection<Comparaison>? Comparaisons { get; set; }
+       
     }
 }

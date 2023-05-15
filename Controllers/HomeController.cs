@@ -81,6 +81,21 @@ namespace PROJET.Controllers
             return View();
         }
 
+
+
+        public IActionResult ResultMethode1()
+        {
+          return View();
+
+         }
+
+        public IActionResult ResultMethode2()
+        {
+            return View();
+
+        }
+
+
         //[HttpPost]
         // public IActionResult SetHyperparameter(int hyperparameter)
         // {
@@ -88,12 +103,12 @@ namespace PROJET.Controllers
         // return View();
         //  }
         [HttpPost]
-        public IActionResult Hyperparameter(MethodeMachineLearning model)
+        public IActionResult Hyperparameter(Hyperparamètres model)
         {
             //int hyperparameter1Value = model.Hyperparameter1;
-           // int hyperparameter2Value = model.Hyperparameter2;
+            // int hyperparameter2Value = model.Hyperparameter2;
 
-            float Hyperparamétres = model.Hyperparamétres;
+            string? NomHParam = model.NomHParam;
            // Effectuer les traitements nécessaires en fonction des valeurs des hyperparamètres
 
            // Rediriger l'utilisateur vers une autre vue ou une autre action

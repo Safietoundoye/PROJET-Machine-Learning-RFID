@@ -55,7 +55,7 @@ namespace PROJET.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutSauvegarde(int id, Sauvegarde sauvegarde)
         {
-            if (id != sauvegarde.Id)
+            if (id != sauvegarde.IdSauvegarde)
             {
                 return BadRequest();
             }
@@ -93,7 +93,7 @@ namespace PROJET.Controllers
             _context.Sauvegarde.Add(sauvegarde);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetSauvegarde", new { id = sauvegarde.Id }, sauvegarde);
+            return CreatedAtAction("GetSauvegarde", new { id = sauvegarde.IdSauvegarde }, sauvegarde);
         }
 
         // DELETE: api/Sauvegardes/5
@@ -118,7 +118,7 @@ namespace PROJET.Controllers
 
         private bool SauvegardeExists(int id)
         {
-            return (_context.Sauvegarde?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Sauvegarde?.Any(e => e.IdSauvegarde == id)).GetValueOrDefault();
         }
     }
 }

@@ -10,8 +10,15 @@ namespace PROJET.Models
         [Required]
         
         public string? Nom { get; set; }
-        
+
+        public int? NbrHParam { get; set; }
+
+        public ICollection <Hyperparamètres>? Hyperparams { get; set;}
         public ICollection<Sauvegarde>? Sauvegardes { get; set; }
+
     }
 
 }
+
+
+
