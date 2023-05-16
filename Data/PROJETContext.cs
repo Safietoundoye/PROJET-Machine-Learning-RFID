@@ -14,14 +14,12 @@ namespace PROJET.Data
         {
         }
 
-        public DbSet<PROJET.Models.Comparaison> Comparaison { get; set; } = default!;
+        public DbSet<PROJET.Models.Sauvegarde> Sauvegarde { get; set; } = default!;
+
+        public DbSet<PROJET.Models.Hyperparamètres> Hyperparamètres { get; set; } = default!;
 
         public DbSet<PROJET.Models.Methode> Methode { get; set; } = default!;
 
-        public DbSet<PROJET.Models.MethodeAnalytique> MethodeAnalytique { get; set; } = default!;
-
-        public DbSet<PROJET.Models.MethodeMachineLearning> MethodeMachineLearning { get; set; } = default!;
-
-        public DbSet<PROJET.Models.Sauvegarde> Sauvegarde { get; set; } = default!;
+        public DbSet<PROJET.Models.Histo_Hparam> Histo_Hparam { get; set; } = default!;
     }
 }

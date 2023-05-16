@@ -36,15 +36,15 @@
        <div class="btn">
 
 
+        <form asp-action="Analytical" method="post">
+          <input class="dropbtn" type="submit" name="envoi" value="Méthode analytique" id="analytique" onclick="window.location.href='@Url.Action("Page2", "Home")'" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;">
          
-         <input class="dropbtn" type="submit" name="envoi" value="Méthode analytique" id="analytique" onclick="window.location.href='@Url.Action("Page2", "Home")'" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;">
-               
-         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-         
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </form>
          <input class="dropbtn" type="submit" name="envoi" value="Méthode predictive" id="predictive" onclick="afficher()" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;">
 
            <div class="dropdown-content" id="myDropdown">
-            <a href="Home/Page3">Méthode 1</a>
+            <a href="Home/Page3">RandomForestClassifier</a>
             <a href="Home/Page4">Méthode 2</a>
             <a href="Home/Page5">Méthode 3</a>
            </div>
