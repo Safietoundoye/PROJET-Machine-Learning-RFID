@@ -26,6 +26,37 @@ window.onclick = function (event) {
     }
 }
 
-    
+   
+var rangeInput = document.getElementById('hyperparameter1');
+var rangeValue = document.getElementById('rangeValue');
+
+// Fonction pour mettre à jour la valeur au fur et à mesure que le curseur est déplacé
+rangeInput.addEventListener('input', function () {
+    rangeValue.textContent = rangeInput.value;
+});
+
+
+var rangeInput2 = document.getElementById('hyperparameter2');
+ var rangeValue2 = document.getElementById('rangeValue2');
+ rangeInput2.addEventListener('input', function () {
+    rangeValue2.textContent = rangeInput2.value;
+ });
+
+
+
+
+//var rangeInput3 = document.getElementById('hyperparameter3');
+//var rangeValue3 = document.getElementById('rangeValue3');
+
+// Fonction pour mettre à jour la valeur au fur et à mesure que le curseur est déplacé
+//rangeInput3.addEventListener('input', function () {
+   // rangeValue3.textContent = rangeInput3.value;
+//});
+
+
+
   
-        
+
+
+
+

@@ -20,42 +20,50 @@
   
 
     <div class="text-center">
-        <h1 class="display-4"><u>Logistic Regression</u></h1>
+        <h1 class="display-4"><u>K NEAREST-NEIGHBORS</u></h1>
         <p> <br><br></p>
 
         <h2> <strong>Veuillez choisir vos hyperparamétres</strong></h2>
         <p> <br><br> </p>
 
        
-        
+
 
         <form method="post" action="">
-            <h5>Penalty</h5>
-            <select name="selectedItem">
-            <option value="option1">l1</option>
-            <option value="option2">l2</option>
-            <option value="option3">elasticnet</option>
-            <option value="option4">none</option>
-          </select>
+
+
+            <label for="hyperparameter5"><h5>N_neighbors</h5> </label> <p> <br> </p>
+            <input type="range" id="hyperparameter5" name="hyperparameter5" min="1" max="10" value="50">
 
             <p> <br><br> </p>
-            <label for="hyperparameter3"><h5> C</h5></label> <p> <br> </p>
-            <input type="range" id="hyperparameter3" name="hyperparameter3" min="0.01" max="10" value="50">
-             
-            <p> <br><br> </p>
 
-            <h5>Solver</h5>
+            <h5>Metric</h5>
             <select name="selectedItem">
-                <option value="option1">newton-cg</option>
-                <option value="option2">lpfgs</option>
-                <option value="option3">liblinear </option>
-                <option value="option4">sag</option>
-                <option value="option5">saga</option>
+                <option value="option1">euclidean</option>
+                <option value="option2">manhattan</option>
+                <option value="option3">chebyshev</option>
+               
             </select>
+            <p> <br><br> </p>
 
-            
+            <h5>Weights</h5>
+            <select name="selectedItem">
+                <option value="option1">uniform</option>
+                <option value="option2">distance</option>
+               
+            </select>
+            <p> <br><br> </p>
+
+            <h5>Algorithm</h5>
+            <select name="selectedItem">
+                <option value="option1">auto</option>
+                <option value="option2">brute</option>
+                <option value="option3">kd_tree</option>
+                <option value="option3">ball_tree</option>
+            </select>
             <p> <br><br></p>
-            <p> <button type="submit" onclick="window.location.href='@Url.Action("ResultMethode2", "Home")'">Enregistrer</button>
+
+            <p> <button type="submit" onclick="window.location.href='@Url.Action("ResultMethode4", "Home")'">Enregistrer</button>
         </form>
 
 
