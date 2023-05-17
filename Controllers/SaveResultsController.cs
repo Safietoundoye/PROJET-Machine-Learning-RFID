@@ -14,8 +14,17 @@ namespace PROJET.Controllers
             DateTime currentTime = DateTime.Now;
             model.Time = currentTime;
 
+            if (float.TryParse(Request.Form["accuracyR"], out float accuracyR))
+            {
+                if (model.Accuracy < accuracyR)
+                {
+                    // Assign the value of accuracyR to accuracy
+                    model.Accuracy = accuracyR;
+                }
+            }
+
             // Create a string representation of the data
-            string data = $"IdSauvegarde: {model.IdSauvegarde}\nAccuracy: {model.Accuracy}\nTime: {model.Time}";
+            string data = $"\nIdSauvegarde: {model.IdSauvegarde}\nAccuracy: {model.Accuracy}\nTime: {model.Time}\n________\n";
 
             // Save the data to a .txt file
             string filePath = "C:\\Users\\cafes\\Documents\\Visual Studio 2022\\SaveResultsFile.txt"; // Provide the actual file path

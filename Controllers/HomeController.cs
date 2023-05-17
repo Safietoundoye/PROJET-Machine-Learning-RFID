@@ -49,7 +49,8 @@ namespace PROJET.Controllers
                 var content = new StringContent(JsonConvert.SerializeObject(requestData), System.Text.Encoding.UTF8, "application/json");
                 var response = await client.PostAsync("http://localhost:5000/RFClassifier", content);
                 var result1 = await response.Content.ReadAsStringAsync();
-
+                
+                ViewBag.Hyperparameter1 = hyperparameter1;
                 ViewBag.Result1 = result1;
             }
 
