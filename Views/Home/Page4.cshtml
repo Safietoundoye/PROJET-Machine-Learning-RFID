@@ -29,28 +29,29 @@
        
         
 
-        <form method="post" action="">
+        <form asp-action="LRClassifier" method="post">
             <h5>Penalty</h5>
-            <select name="selectedItem">
-            <option value="option1">l1</option>
-            <option value="option2">l2</option>
-            <option value="option3">elasticnet</option>
-            <option value="option4">none</option>
+            <select name="selectedItem1">
+            <option value="l1">l1</option>
+            <option value="l2">l2</option>
+            <option value="elasticnet">elasticnet</option>
+            <option value="none">none</option>
           </select>
 
             <p> <br><br> </p>
-            <label for="hyperparameter3"><h5> C</h5></label> <p> <br> </p>
-            <input type="range" id="hyperparameter3" name="hyperparameter3" min="0.01" max="10" value="50">
-             
+            <label for="hyperparameter1"><h5>C</h5></label>
+            <p> <br> </p>
+            <input type="range" id="rangeInput" name="hyperparameter1" min="0.01" max="10" step="0.01" value="0.01">
+            <p id="selectedValue">0.01</p>
             <p> <br><br> </p>
 
             <h5>Solver</h5>
-            <select name="selectedItem">
-                <option value="option1">newton-cg</option>
-                <option value="option2">lpfgs</option>
-                <option value="option3">liblinear </option>
-                <option value="option4">sag</option>
-                <option value="option5">saga</option>
+            <select name="selectedItem2">
+                <option value="newton-cg">newton-cg</option>
+                <option value="lbfgs">lbfgs</option>
+                <option value="liblinear">liblinear </option>
+                <option value="sag">sag</option>
+                <option value="saga">saga</option>
             </select>
 
             
@@ -76,6 +77,15 @@
 
         <p><br></p>
     </div>
+
+    <script>
+        const rangeInput = document.getElementById('rangeInput');
+        const selectedValue = document.getElementById('selectedValue');
+
+        rangeInput.addEventListener('input', () => {
+            selectedValue.textContent = rangeInput.value;
+        });
+    </script>
        
         
 </body>

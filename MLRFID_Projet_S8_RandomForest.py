@@ -496,7 +496,82 @@ def RandomForestML(nb_arbre, max_profondeur):
 
 
 
-# In[ ]:
+# In[43]:
+
+from sklearn.linear_model import LogisticRegression
+from sklearn.preprocessing import StandardScaler
+
+def logistic_regression(régularisation, C, algo_résolution):
+
+    # Diviser les données en ensemble d'entraînement et de test
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=42)
+
+    # Normaliser les données
+    scaler = StandardScaler()
+    X_train = scaler.fit_transform(X_train)
+    X_test = scaler.transform(X_test)
+
+    # Créer un objet LogisticRegression avec les hyperparamètres
+    logreg = LogisticRegression(penalty= régularisation, C= C, solver= algo_résolution)
+
+    # Entraîner le modèle sur les données d'entraînement
+    logreg.fit(X_train, y_train)
+
+    # Faire des prédictions sur les données de test
+    y_pred = logreg.predict(X_test)
+
+    # Évaluer la précision du modèle
+    accuracy = logreg.score(X_test, y_test)
+
+    return accuracy
+
+
+
+
+#In[44]:
+
+from sklearn.svm import SVC
+
+def train_svc_model(kernel, C_marge_er, flexibilite, degree_pol, coeficient, tolerance):
+
+    # Diviser les données en ensembles d'entraînement et de test
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15, random_state=42)
+    
+    # 100000 - 4mins
+    X_train = X_train[:100000]
+    y_train = y_train[:100000]
+    
+    # Créer un objet StandardScaler
+    scaler = StandardScaler()
+
+    # Normaliser les données d'entraînement
+    X_train = scaler.fit_transform(X_train)
+
+    # Normaliser les données de test en utilisant les paramètres de normalisation appris sur les données d'entraînement
+    X_test = scaler.transform(X_test)
+
+    # Créer un modèle SVC avec les hyperparamètres définis
+    svc = SVC(kernel='rbf', C= C_marge_er, gamma= flexibilite, degree = degree_pol, coef0= coeficient, tol = tolerance)
+
+    # Entraîner le modèle avec les données d'entraînement
+    svc.fit(X_train, y_train)
+
+    # Faire des prédictions sur l'ensemble de test
+    y_pred = svc.predict(X_test)
+
+    # Évaluer la précision du modèle sur l'ensemble de test
+    accuracy = svc.score(X_test, y_test)
+    return accuracy
+
+
+
+
+#In[]:
+
+
+
+
+
 
 
 
