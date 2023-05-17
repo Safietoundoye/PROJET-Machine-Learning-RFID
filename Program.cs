@@ -1,9 +1,47 @@
-using Microsoft.AspNetCore.Identity;using Microsoft.EntityFrameworkCore;using PROJET.Data;using Microsoft.Extensions.DependencyInjection;using PROJET.Models;using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using PROJET.Data;
+using Microsoft.Extensions.DependencyInjection;
+using PROJET.Models;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-var builder = WebApplication.CreateBuilder(args);builder.Services.AddDbContext<PROJETContext>(options =>
+
+
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<PROJETContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("PROJETContext") ?? throw new InvalidOperationException("Connection string 'PROJETContext' not found.")));
-builder.Services.AddDbContext<ApplicationDbContext>(options =>    options.UseSqlServer(builder.Configuration.GetConnectionString("PROJETContext") ?? throw new InvalidOperationException("Connection string 'PROJETContext' not found.")));// Add services to the container.var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");builder.Services.AddDbContext<ApplicationDbContext>(options =>    options.UseSqlServer(connectionString));builder.Services.AddDatabaseDeveloperPageExceptionFilter();builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)    .AddEntityFrameworkStores<ApplicationDbContext>();builder.Services.AddControllersWithViews();var app = builder.Build();// Configure the HTTP request pipeline.if (app.Environment.IsDevelopment()){    app.UseMigrationsEndPoint();}else{    app.UseExceptionHandler("/Home/Error");}app.UseStaticFiles();app.UseRouting();app.UseAuthorization();//Added part by Ibrahima 
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("PROJETContext") ?? throw new InvalidOperationException("Connection string 'PROJETContext' not found.")));
+
+// Add services to the container.
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(connectionString));
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddControllersWithViews();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseMigrationsEndPoint();
+}
+else
+{
+    app.UseExceptionHandler("/Home/Error");
+}
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.UseAuthorization();
+
+//Added part by Ibrahima 
 
 
 app.UseRouting();
@@ -39,4 +77,4 @@ app.MapRazorPages();
 
 
 
-app.Run();
+app.Run();
