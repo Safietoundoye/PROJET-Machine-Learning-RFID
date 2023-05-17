@@ -19,7 +19,7 @@
   
 
     <div class="text-center">
-        <h1 class="display-4"><u>Méthode 1</u></h1>
+        <h1 class="display-4"><u>Random Forest</u></h1>
         <p> <br><br></p>
 
         <h2> <strong>Veuillez choisir vos hyperparamétres</strong></h2>
@@ -30,13 +30,13 @@
 
         <form asp-action="RFClassifier" method="post">
            
-            <label for="hyperparameter1"><h5>Hyperparamètre 1</h5> </label>
+            <label for="hyperparameter1"><h5>n_estimators</h5> </label>
             <input type="range" id="hyperparameter1" name="hyperparameter1" min="50" max="200" value="50">
             <p id="rangeValue">50</p>
             <p> <br><br> </p>
             
 
-            <label for="hyperparameter2"><h5>Hyperparamètre 2 </h5></label>
+            <label for="hyperparameter2"><h5>max_depth </h5></label>
             <input type="range" id="hyperparameter2" name="hyperparameter2" min="5" max="15" value="5">
             <p id="rangeValue2">5</p>
             <p><br><br></p>
