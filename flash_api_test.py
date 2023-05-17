@@ -25,6 +25,7 @@ def analyticalWithParams_route():
     MLRF = RandomForestML(int(params['Hyperparameter1']), int(params['Hyperparameter2']))
     # Return the prediction as JSON
     return jsonify({'MLRF': MLRF})
+
 app.run(host='0.0.0.0', port=5000)
 
 

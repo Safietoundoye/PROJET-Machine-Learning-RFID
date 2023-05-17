@@ -66,11 +66,12 @@ app.MapControllerRoute(
 
 
 app.MapRazorPages();
-//using (var serviceScope = app.Services.GetService<IServiceScopeFactory>().CreateScope())
-//{
-//var context = serviceScope.ServiceProvider.GetRequiredService<PROJETContext>();
-//context.Database.EnsureCreated();
-//}
+using (var serviceScope = app.Services.GetService<IServiceScopeFactory>().CreateScope())
+{
+var context = serviceScope.ServiceProvider.GetRequiredService<PROJETContext>();
+    //context.Database.EnsureDeleted();
+    context.Database.EnsureCreated();
+}
 
 
 

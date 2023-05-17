@@ -92,6 +92,10 @@ namespace PROJET.Controllers
         {
             return View();
         }
+        public IActionResult Page6()
+        {
+            return View();
+        }
 
 
 
@@ -107,6 +111,16 @@ namespace PROJET.Controllers
 
         }
 
+        public IActionResult ResultMethode3()
+        {
+            return View();
+
+        }
+        public IActionResult ResultMethode4()
+        {
+            return View();
+
+        }
 
         //[HttpPost]
         // public IActionResult SetHyperparameter(int hyperparameter)
@@ -127,7 +141,13 @@ namespace PROJET.Controllers
             return RedirectToAction("Resultats");
         }
 
-
+        [HttpPost]
+        public ActionResult Action(string selectedItem)
+        {
+            // Effectuez le traitement nécessaire avec le selectedItem
+            // et retournez la vue appropriée avec les résultats
+            return View("Result", selectedItem);
+        }
 
 
     }
