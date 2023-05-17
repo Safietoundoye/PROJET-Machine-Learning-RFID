@@ -57,6 +57,62 @@ namespace PROJET.Controllers
         }
 
 
+        [HttpPost]
+        public async Task<IActionResult> LRClassifier(string selectedItem1, string hyperparameter1, string selectedItem2)
+        {
+            using (var client = new HttpClient())
+            {
+                var requestData = new
+                {
+                    Hyperparameter1 = selectedItem1,
+
+                    Hyperparameter2 = hyperparameter1,
+
+                    Hyperparameter3 = selectedItem2
+                };
+
+                var content = new StringContent(JsonConvert.SerializeObject(requestData), System.Text.Encoding.UTF8, "application/json");
+                var response = await client.PostAsync("http://localhost:5000/LRClassifier", content);
+                var result2 = await response.Content.ReadAsStringAsync();
+
+                ViewBag.Result2 = result2;
+            }
+
+            return View("ResultMethode2");
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> SVCClassifier(string selectedItem1, string hyperparameter1, string hyperparameter2, string hyperparameter3, string hyperparameter4, string selectedItem2)
+        {
+            using (var client = new HttpClient())
+            {
+                var requestData = new
+                {
+                    Hyperparameter1 = selectedItem1,
+
+                    Hyperparameter2 = hyperparameter1,
+
+                    Hyperparameter3 = hyperparameter2,
+
+                    Hyperparameter4 = hyperparameter3,
+
+                    Hyperparameter5 = hyperparameter4,
+
+                    Hyperparameter6 = selectedItem2
+                };
+
+                var content = new StringContent(JsonConvert.SerializeObject(requestData), System.Text.Encoding.UTF8, "application/json");
+                var response = await client.PostAsync("http://localhost:5000/SVCClassifier", content);
+                var result3 = await response.Content.ReadAsStringAsync();
+
+                ViewBag.Result3 = result3;
+            }
+
+            return View("ResultMethode3");
+        }
+
+
         public IActionResult Index()
         {
              return View();

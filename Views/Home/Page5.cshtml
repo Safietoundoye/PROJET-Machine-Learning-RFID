@@ -29,39 +29,48 @@
        
 
 
-        <form method="post" action="/Home/ResultMethode3">
+        <form asp-action="SVCClassifier" method="post">
             <h5>Kernel</h5>
-            <select name="selectedItem">
-                <option value="option1">linear</option>
-                <option value="option2">poly</option>
-                <option value="option3">rbf</option>
-                <option value="option4">sigmoid</option>
+            <select name="selectedItem1">
+                <option value="linear">linear</option>
+                <option value="poly">poly</option>
+                <option value="rbf">rbf</option>
+                <option value="sigmoid">sigmoid</option>
             </select>
             <p> <br><br> </p>
 
-            <label for="hyperparameter5"><h5>C</h5> </label> <p> <br> </p>
-            <input type="range" id="hyperparameter5" name="hyperparameter5" min="0.01" max="10" value="50">
-            
+            <label for="hyperparameter1"><h5>C</h5> </label>
+            <p> <br> </p>
+            <input type="range" id="rangeInput1" name="hyperparameter1" min="0.01" max="10" step="0.01" value="0.01">
+            <p id="selectedValue1">0.01</p>
+
             <p> <br><br> </p>
             
 
-            <label for="hyperparameter6"><h5>Gamma</h5></label> <p> <br> </p>
-            <input type="range" id="hyperparameter6" name="hyperparameter6" min="0.01" max="10" value="50">
+            <label for="hyperparameter2"><h5>Gamma</h5></label>
+            <p> <br> </p>
+            <input type="range" id="rangeInput2" name="hyperparameter2" min="0.01" max="10" step="0.01" value="0.01">
+            <p id="selectedValue2">0.01</p>
+
             <p> <br><br></p>
 
-            <label for="hyperparameter3"><h5>Degré</h5></label> <p> <br> </p>
-            <input type="range" id="hyperparameter3" name="hyperparameter3" min="1" max="3" value="50">
+            <label for="hyperparameter3"><h5>Degré</h5></label>
+            <p> <br> </p>
+            <input type="range" id="rangeInput3" name="hyperparameter3" min="1" max="3" value="1">
+            <p id="selectedValue3">1</p>
             <p> <br><br></p>
 
-            <label for="hyperparameter3"><h5>Coef</h5></label> <p> <br> </p>
-            <input type="range" id="hyperparameter3" name="hyperparameter3" min="-1" max="1" value="50">
+            <label for="hyperparameter4"><h5>Coef</h5></label>
+            <p> <br> </p>
+            <input type="range" id="rangeInput4" name="hyperparameter4" min="-1" max="1" value="-1">
+            <p id="selectedValue4">-1</p>
             <p> <br><br></p>
 
             <h5>Tolérance</h5>
-            <select name="selectedItem">
-                <option value="option1">1e-3</option>
-                <option value="option2">1e-4</option>
-                <option value="option3">1e-5</option>
+            <select name="selectedItem2">
+                <option value="1e-3">1e-3</option>
+                <option value="1e-4">1e-4</option>
+                <option value="1e-5">1e-5</option>
             </select>
 
             <p> <br><br></p>
@@ -86,6 +95,30 @@
 
         <p><br></p>
     </div>
+
+    <script>
+        const rangeInput1 = document.getElementById('rangeInput1');
+        const rangeInput2 = document.getElementById('rangeInput2');
+        const rangeInput3 = document.getElementById('rangeInput3');
+        const rangeInput4 = document.getElementById('rangeInput4');
+        const selectedValue1 = document.getElementById('selectedValue1');
+        const selectedValue2 = document.getElementById('selectedValue2');
+        const selectedValue3 = document.getElementById('selectedValue3');
+        const selectedValue4 = document.getElementById('selectedValue4');
+
+        rangeInput1.addEventListener('input', () => {
+            selectedValue1.textContent = rangeInput1.value;
+        });
+         rangeInput2.addEventListener('input', () => {
+            selectedValue2.textContent = rangeInput2.value;
+        });
+         rangeInput3.addEventListener('input', () => {
+            selectedValue3.textContent = rangeInput3.value;
+        });
+        rangeInput4.addEventListener('input', () => {
+            selectedValue4.textContent = rangeInput4.value;
+        });
+    </script>
        
         
 </body>
