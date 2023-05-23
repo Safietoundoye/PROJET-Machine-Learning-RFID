@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    
+}
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="~/Comparaison.css">
+    <script src="~/js/site.js"></script>
+    
+</head>
+
+<body>
+    <header>
+
+        <nav class="navbar">
+            <ul>
+                <li> <h1 class="nomdusite"><strong>RFID WEBSITE </strong></h1> </li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <p> <br><br><br></p>
+
+    <div class="text-center">
+        <h1 class="display-4"><u>Welcome</u></h1>
+        <p> <br><br><br></p>
+
+        <h2> <strong>Veuillez faire votre choix<br>pour procéder à la comparaison</strong></h2>
+        <p> <br><br><br> </p>
+       
+            <form id="methodForm" action="parametres.html">
+                <input type="checkbox" name="method" value="method1"> Méthode analytique
+            <input type="checkbox" name="method" value="method2">Random forest<br>
+            <input type="checkbox" name="method" value="method3">Logistic Regression<br>
+                <br>
+                <button type="submit">Choisir les hyperparamètres</button>
+            </form>
+        
+    
+
+        <p><br><br><br></p>
+  
+    </div>
+
+    <p><br><br><br></p>
+        
+</body>

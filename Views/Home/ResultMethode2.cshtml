@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="Style.css">
-   
+    
+    <link rel="stylesheet" type="text/css" href="~/Result.css">
 </head>
 
 
@@ -13,18 +13,24 @@
 
     <header>
 
-        <h1 class="nomdusite"><strong>RFID WEBSITE</strong></h1>
+        
+        <nav class="navbar">
+            <ul>
+                <li> <h1 class="nomdusite"><strong>RFID WEBSITE </strong></h1> </li>
+
+            </ul>
+        </nav>
 
     </header>
     <p> <br><br></p>
 
     <div class="text-center">
-        <h1 class="display-4"><u>Logistic regression</u></h1>
+       <span class="animation-text"> <h1 class="display-4"><u>Logistic regression</u></h1> </span>
         <p> <br><br></p>
 
         <h2> <strong>Voici le résultat obtenu<br> avec la méthode logistic regression</strong></h2>
 
-        <h3>Result: @Html.Raw(ViewBag.Result2)</h3>
+      <span class="animation-text">  <h3>Result: @Html.Raw(ViewBag.Result2)</h3></span>
 
 
         <p> <br><br><br> <br><br><br> </p>

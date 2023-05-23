@@ -4,42 +4,41 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="Style.css">
+    <link rel="stylesheet" type="text/css" href="~/Page2.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css">
 </head>
 
 <body>
     <header>
-        <h1 class="nomdusite"><strong>RFID WEBSITE</strong></h1>
+
+
+            <nav class="navbar2">
+                <ul>
+                    <li> <h1 class="nomdusite"><strong>RFID WEBSITE</strong></h1></li>
+                </ul>
+            </nav>
+        
+                     
     </header>
 
     <div class="text-center">
-        <h1 class="display-4"><u>Méthode analytique</u></h1>
+        <h1 class="display-4 animate__animated animate__bounceIn"><u>Méthode analytique</u></h1>
         <p> <br><br></p>
 
         <h2> <strong>Voici le résultat obtenu<br> à la suite de ce test</strong></h2>
 
 
-
-        @{
-            string resultJson = ViewBag.Result?.ToString();
-            decimal accuracyF = 0;
-            if (!string.IsNullOrEmpty(resultJson))
-            {
-                dynamic resultObject = Newtonsoft.Json.JsonConvert.DeserializeObject(resultJson);
-                decimal.TryParse(resultObject.analytic.ToString(), out accuracyF);
-            }
-        }
-
-        <h3>Result: @Html.Raw(accuracyF)</h3>
-
+        <h3>Result: @Html.Raw(ViewBag.Result)</h3>
                     
                 
         <p> <br><br><br> <br><br><br> </p>
     
-        <form method="post" action="/SaveResults">
 
-            <input type="hidden" name="accuracyR" value="@Html.Raw(accuracyF)" />
-            <input type="hidden" name="MethodeId" value="1" />
+       <div class="btn2">
+
+       
+            
+          <input class="dropbtn" type="submit" name="envoi" value="Sauvegarder" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;">
 
 
             <input class="dropbtn" type="submit" name="envoi" value="Sauvegarder" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;">

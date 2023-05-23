@@ -180,12 +180,14 @@ namespace PROJET.Controllers
 
         }
 
-        //[HttpPost]
-        // public IActionResult SetHyperparameter(int hyperparameter)
-        // {
-        // Traiter la valeur de l'hyperparamètre
-        // return View();
-        //  }
+
+        public IActionResult Comparaison()
+        {
+            return View();
+
+        }
+
+        
         [HttpPost]
         public IActionResult Hyperparameter(Hyperparamètres model)
         {

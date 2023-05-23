@@ -4,23 +4,27 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="Style.css">
+    
+    <link rel="stylesheet" type="text/css" href="~/Page5.css">
    
 </head>
 
-<header>
-
-    <h1 class="nomdusite"><strong>RFID WEBSITE</strong></h1>
-
-</header>
-<p> <br><br></p>
 
 <body>
-    
-  
+
+    <header>
+
+        <nav class="navbar5">
+            <ul>
+                <li> <h1 class="nomdusite"><strong>RFID WEBSITE</strong></h1></li>
+               
+            </ul>
+        </nav>
+
+    </header>
 
     <div class="text-center">
-        <h1 class="display-4"><u>Méthode 3</u></h1>
+        <span class="animation-text"> <h1 class="display-4"> <u>SVM</u></h1>  </span>
         <p> <br><br></p>
 
         <h2> <strong>Veuillez choisir vos hyperparamétres</strong></h2>
@@ -30,7 +34,8 @@
 
 
         <form asp-action="SVCClassifier" method="post">
-            <h5>Kernel</h5>
+            <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le noyau (kernel) dans les machines à vecteurs de support (SVM) est une fonction mathématique qui transforme les données d'entrée dans un espace de dimension supérieure, permettant ainsi de trouver une frontière de décision non linéaire">
+                <span class="animation-text"> <h5>Kernel</h5> </span> </span>
             <select name="selectedItem1">
                 <option value="linear">linear</option>
                 <option value="poly">poly</option>
@@ -39,7 +44,7 @@
             </select>
             <p> <br><br> </p>
 
-            <label for="hyperparameter1"><h5>C</h5> </label>
+            <label for="hyperparameter1">  <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le paramètre de régularisation (C) : Il nous indique dans quelle mesure nous souhaitons éviter la classification erronée"> <span class="animation-text"><h5>C</h5> </span> </span></label>
             <p> <br> </p>
             <input type="range" id="rangeInput1" name="hyperparameter1" min="0.01" max="10" step="0.01" value="0.01">
             <p id="selectedValue1">0.01</p>
@@ -47,26 +52,30 @@
             <p> <br><br> </p>
             
 
-            <label for="hyperparameter2"><h5>Gamma</h5></label>
+            <label for="hyperparameter2"> <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le paramètre gamma définit à quel point l'influence d'un seul exemple d'entraînement est importante. Cela signifie que si gamma est élevé, on considérera seulement les points proches de l'hyperplan sinon on considérera les points à plus grande distance"><span class="animation-text"><h5>Gamma</h5> </span>  </span> </label>
             <p> <br> </p>
             <input type="range" id="rangeInput2" name="hyperparameter2" min="0.01" max="10" step="0.01" value="0.01">
             <p id="selectedValue2">0.01</p>
 
             <p> <br><br></p>
 
-            <label for="hyperparameter3"><h5>Degré</h5></label>
+            <label for="hyperparameter3"><span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le paramètre degree est utilisé lorsque le noyau est défini sur 'poly' (polynomial). Il représente essentiellement le degré du polynôme utilisé pour trouver l'hyperplan qui divise les données"> <span class="animation-text"><h5>Degré</h5> </span></span></label>
             <p> <br> </p>
             <input type="range" id="rangeInput3" name="hyperparameter3" min="1" max="3" value="1">
             <p id="selectedValue3">1</p>
             <p> <br><br></p>
 
-            <label for="hyperparameter4"><h5>Coef</h5></label>
+            <label for="hyperparameter4">
+                <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="coef0 dans les machines à vecteurs de support (SVM) est un paramètre utilisé dans certains noyaux, tels que le noyau polynomial et le noyau sigmoïde. Il définit la contribution de l'influence des termes d'interaction de degré supérieur dans la fonction de décision.Plus précisément, il contrôle l'importance relative des termes de degré supérieur par rapport aux termes de degré inférieur dans la fonction de décision"> <span class="animation-text"><h5>Coef</h5> </span></span>
+            </label>
             <p> <br> </p>
             <input type="range" id="rangeInput4" name="hyperparameter4" min="-1" max="1" value="-1">
             <p id="selectedValue4">-1</p>
             <p> <br><br></p>
 
-            <h5>Tolérance</h5>
+            <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le paramètre de tolérance dans les machines à vecteurs de support (SVM) est un paramètre qui contrôle la tolérance acceptable pour la convergence de l'algorithme d'optimisation. Il détermine la précision à laquelle l'optimisation doit être effectuée avant de considérer qu'elle a convergé vers une solution acceptable">
+                <span class="animation-text"><h5>Tolérance</h5> </span>
+            </span>
             <select name="selectedItem2">
                 <option value="1e-3">1e-3</option>
                 <option value="1e-4">1e-4</option>
@@ -74,26 +83,19 @@
             </select>
 
             <p> <br><br></p>
-            <p> <button type="submit" onclick="window.location.href='@Url.Action("ResultMethode3", "Home")'">Enregistrer</button>
+            <p> <button type="submit" class="dropbtn" onclick="window.location.href='@Url.Action("ResultMethode3", "Home")'">Valider</button>
         </form>
 
 
 
-
-
-        <p> <br><br><br> </p>
-
        <div class="btn">
-            <!-- <input class="dropbtn" type="submit" name="envoi" value="Sauvegarder" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;"> -->
-
-
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
+           
+          <div class="button-container">
            <input class="dropbtn" type="submit" name="envoi" value="Retour"  onclick="window.location.href='@Url.Action("Index", "Home")'" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;">
-            
+          </div>
         </div>
 
-        <p><br></p>
+       
     </div>
 
     <script>
