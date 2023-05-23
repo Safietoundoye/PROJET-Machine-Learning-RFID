@@ -24,8 +24,18 @@
 
         <h2> <strong>Voici le résultat obtenu<br> avec la méthode Random forest</strong></h2>
 
-        <h3>Result: @Html.Raw(ViewBag.Result1)</h3>
+        <h3>Result: @Html.Raw(ViewBag.Result1) and @Html.Raw(ViewBag.Hyperparameter1) </h3>
 
+
+        @{
+            string resultJson = ViewBag.Result1?.ToString();
+            decimal accuracyF = 0;
+            if (!string.IsNullOrEmpty(resultJson))
+            {
+                dynamic resultObject = Newtonsoft.Json.JsonConvert.DeserializeObject(resultJson);
+                decimal.TryParse(resultObject.analytic.ToString(), out accuracyF);
+            }
+        }
 
         <p> <br><br><br> <br><br><br> </p>
 
@@ -34,8 +44,16 @@
 
 
 
-            <input class="dropbtn" type="submit" name="envoi" value="Sauvegarder" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;">
+            <form method="post" action="/SaveResults">
 
+                <input type="hidden" name="HParam1" value="1" />
+
+                <input type="hidden" name="accuracyR" value="@Html.Raw(accuracyF)" />
+                <input type="hidden" name="MethodeId" value="2" />
+
+
+                <input class="dropbtn" type="submit" name="envoi" value="Sauvegarder" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;">
+            </form>
 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 

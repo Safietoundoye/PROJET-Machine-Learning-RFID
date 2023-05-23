@@ -4,7 +4,9 @@
     {
         public int IdSauvegarde { get; set; }
         public float Accuracy { get; set; }
-        public DateTime Time { get; set; }
+        public DateTime Heure { get; set; }
+        public int MethodeId { get; set; }
+
     }
 
 }

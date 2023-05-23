@@ -41,7 +41,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-//Added part by Ibrahima 
+
 
 
 app.UseRouting();
@@ -57,9 +57,6 @@ app.MapControllerRoute(
     name: "SaveResults",
     pattern: "/SaveResults",
     defaults: new { controller = "SaveResults", action = "SaveResults" });
-
-
-// ...
 
 
 

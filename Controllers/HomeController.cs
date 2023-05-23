@@ -51,7 +51,8 @@ namespace PROJET.Controllers
                 var result1 = await response.Content.ReadAsStringAsync();
                 
                 ViewBag.Hyperparameter1 = hyperparameter1;
-                ViewBag.Result1 = result1;
+                ViewBag.Hyperparameter2 = hyperparameter2;
+                ViewBag.Result1 = result1; //Resultat Random Forest
             }
 
             return View("ResultMethode1");
