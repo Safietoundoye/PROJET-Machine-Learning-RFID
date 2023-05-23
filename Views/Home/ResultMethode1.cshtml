@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="Style.css">
+    <link rel="stylesheet" type="text/css" href="~/Result.css">
    
 </head>
 
@@ -13,18 +13,26 @@
 
     <header>
 
-        <h1 class="nomdusite"><strong>RFID WEBSITE</strong></h1>
+       
+
+        <nav class="navbar">
+            <ul>
+                <li> <h1 class="nomdusite"><strong>RFID WEBSITE </strong></h1> </li>
+               
+            </ul>
+        </nav>
 
     </header>
     <p> <br><br></p>
 
     <div class="text-center">
-        <h1 class="display-4"><u>RANDOM FOREST</u></h1>
+         <span class="animation-text"><h1 class="display-4"><u>RANDOM FOREST</u></h1> </span>
+         
         <p> <br><br></p>
 
         <h2> <strong>Voici le résultat obtenu<br> avec la méthode Random forest</strong></h2>
 
-        <h3>Result: @Html.Raw(ViewBag.Result1)</h3>
+        <span class="animation-text"><h3>Result: @Html.Raw(ViewBag.Result1)</h3></span>
 
 
         <p> <br><br><br> <br><br><br> </p>
@@ -39,7 +47,7 @@
 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-            <input class="dropbtn" type="submit" name="envoi" value="Retour" onclick="window.location.href='@Url.Action("Page3", "Home")'" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;">
+            <input class="dropbtn"  type="submit" name="envoi" value="Retour" onclick="window.location.href='@Url.Action("Page3", "Home")'" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;">
 
         </div>
 

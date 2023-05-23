@@ -9,7 +9,7 @@ namespace PROJET.Models
     {
     [Key]
     public int IdHParam { get; set; }
-   [Required]
+    [Required]
 
     public string? NomHParam { get; set; }
     public string? Type { get; set; }
