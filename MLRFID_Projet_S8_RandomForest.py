@@ -476,7 +476,7 @@ def RandomForestML(nb_arbre, max_profondeur):
     clf = RandomForestClassifier(n_estimators = nb_arbre, max_depth = max_profondeur)
 
     # entrainement des données
-    Xtrain, Xtest, ytrain, ytest = train_test_split(X, y, train_size=0.8, stratify=y)
+    Xtrain, Xtest, ytrain, ytest = train_test_split(X, y, train_size=0.8, random_state=42)
     
     # mise à l'échelle
     scaler = MinMaxScaler()
@@ -504,7 +504,7 @@ from sklearn.preprocessing import StandardScaler
 def logistic_regression(régularisation, C, algo_résolution):
 
     # Diviser les données en ensemble d'entraînement et de test
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
     # Normaliser les données
     scaler = StandardScaler()
@@ -535,11 +535,11 @@ from sklearn.svm import SVC
 def train_svc_model(kernel, C_marge_er, flexibilite, degree_pol, coeficient, tolerance):
 
     # Diviser les données en ensembles d'entraînement et de test
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
     
     # 100000 - 4mins
-    X_train = X_train[:100000]
-    y_train = y_train[:100000]
+    X_train = X_train[:10000]
+    y_train = y_train[:10000]
     
     # Créer un objet StandardScaler
     scaler = StandardScaler()
@@ -566,7 +566,34 @@ def train_svc_model(kernel, C_marge_er, flexibilite, degree_pol, coeficient, tol
 
 
 
-#In[]:
+#In[45]:
+
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.datasets import load_iris
+
+def knn_classifier(k, metrique, poids, algorithme):
+    
+    # Division des données en ensembles d'entraînement et de test
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    
+    # Normalisation des données et les mettre à l'échelle
+    scaler = MinMaxScaler()
+    scaler.fit(X_train)
+    X_train = scaler.transform(X_train)
+    X_test = scaler.transform(X_test)
+
+    # Création d'une instance du classificateur KNN avec les hyperparamètres spécifiés
+    knn = KNeighborsClassifier(n_neighbors=k, metric= metrique, weights= poids, algorithm=algorithme)
+
+    # Entraînement du modèle
+    knn.fit(X_train, y_train)
+
+    # Prédictions sur les données de test
+    y_pred = knn.predict(X_test)
+
+    # Évaluation des performances
+    accuracy = accuracy_score(y_test, y_pred)
+    return accuracy
 
 
 

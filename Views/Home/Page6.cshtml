@@ -29,37 +29,37 @@
        
 
 
-        <form method="post" action="">
+        <form asp-action="KNNClassifier" method="post">
 
 
-            <label for="hyperparameter5"><h5>N_neighbors</h5> </label> <p> <br> </p>
-            <input type="range" id="hyperparameter5" name="hyperparameter5" min="1" max="10" value="50">
-
+            <label for="hyperparameter1"><h5>N_neighbors</h5> </label> <p> <br> </p>
+            <input type="range" id="rangeInput" name="hyperparameter1" min="1" max="10" value="1">
+            <p id="selectedValue">1</p>
             <p> <br><br> </p>
 
             <h5>Metric</h5>
-            <select name="selectedItem">
-                <option value="option1">euclidean</option>
-                <option value="option2">manhattan</option>
-                <option value="option3">chebyshev</option>
+            <select name="selectedItem1">
+                <option value="euclidean">euclidean</option>
+                <option value="manhattan">manhattan</option>
+                <option value="chebyshev">chebyshev</option>
                
             </select>
             <p> <br><br> </p>
 
             <h5>Weights</h5>
-            <select name="selectedItem">
-                <option value="option1">uniform</option>
-                <option value="option2">distance</option>
+            <select name="selectedItem2">
+                <option value="uniform">uniform</option>
+                <option value="distance">distance</option>
                
             </select>
             <p> <br><br> </p>
 
             <h5>Algorithm</h5>
-            <select name="selectedItem">
-                <option value="option1">auto</option>
-                <option value="option2">brute</option>
-                <option value="option3">kd_tree</option>
-                <option value="option3">ball_tree</option>
+            <select name="selectedItem3">
+                <option value="auto">auto</option>
+                <option value="brute">brute</option>
+                <option value="kd_tree">kd_tree</option>
+                <option value="ball_tree">ball_tree</option>
             </select>
             <p> <br><br></p>
 
@@ -84,6 +84,14 @@
 
         <p><br></p>
     </div>
-       
+
+    <script>
+        const rangeInput = document.getElementById('rangeInput');
+        const selectedValue = document.getElementById('selectedValue');
+
+        rangeInput.addEventListener('input', () => {
+            selectedValue.textContent = rangeInput.value;
+        });
+    </script>
         
 </body>
