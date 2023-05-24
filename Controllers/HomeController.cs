@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Scripting.Hosting;
-
+using PROJET.Data;
 
 namespace PROJET.Controllers
 {
@@ -139,6 +139,16 @@ namespace PROJET.Controllers
             }
 
             return View("ResultMethode4");
+        }
+
+        [HttpPost]
+        public ActionResult Historique()
+        {
+            using (var context = new PROJETContext())
+            {
+                var Sauvegardes = context.Sauvegarde.ToList();
+                return View(Sauvegardes);
+            }
         }
 
 

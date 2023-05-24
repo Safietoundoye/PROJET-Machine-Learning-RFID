@@ -31,12 +31,6 @@ namespace PROJET.Controllers
             // Create a string representation of the data
             string data = $"\nIdSauvegarde: {model.IdSauvegarde}\nAccuracy: {model.Accuracy}\nTime: {model.Heure}\n________\n";
 
-            // Save the data to a .txt file
-            string filePath = "C:\\Users\\cafes\\Documents\\Visual Studio 2022\\SaveResultsFile.txt"; // Provide the actual file path
-            using (StreamWriter writer = new StreamWriter(filePath, true))
-            {
-                writer.WriteLine(data);
-            }
 
             // Create an instance of Sauvegarde entity
             var sauvegarde = new Sauvegarde
