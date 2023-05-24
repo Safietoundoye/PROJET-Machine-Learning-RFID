@@ -49,8 +49,10 @@ namespace PROJET.Controllers
                 var content = new StringContent(JsonConvert.SerializeObject(requestData), System.Text.Encoding.UTF8, "application/json");
                 var response = await client.PostAsync("http://localhost:5000/RFClassifier", content);
                 var result1 = await response.Content.ReadAsStringAsync();
-
-                ViewBag.Result1 = result1;
+                
+                ViewBag.Hyperparameter1 = hyperparameter1;
+                ViewBag.Hyperparameter2 = hyperparameter2;
+                ViewBag.Result1 = result1; //Resultat Random Forest
             }
 
             return View("ResultMethode1");
@@ -205,12 +207,14 @@ namespace PROJET.Controllers
 
         }
 
-        //[HttpPost]
-        // public IActionResult SetHyperparameter(int hyperparameter)
-        // {
-        // Traiter la valeur de l'hyperparamètre
-        // return View();
-        //  }
+
+        public IActionResult Comparaison()
+        {
+            return View();
+
+        }
+
+        
         [HttpPost]
         public IActionResult Hyperparameter(Hyperparamètres model)
         {

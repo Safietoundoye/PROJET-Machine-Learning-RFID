@@ -14,14 +14,10 @@ namespace PROJET.Models
       
         public DateTime Heure { get; set; }
         
-        public  Methode methode { get; set; }
+        public  int methodeId { get; set; }
 
         public ICollection<Histo_Hparam>? histoHparam { get; set; }
 
-        public Sauvegarde (DateTime heure)
-        {
-            Heure = heure;
-        }
        
     }
 }

@@ -54,9 +54,9 @@ var rangeInput2 = document.getElementById('hyperparameter2');
 //});
 
 
-
-  
-
+$(document).ready(function () {
+    $('.info-tooltip').tooltip();
+});
 
 
 

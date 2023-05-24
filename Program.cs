@@ -3,6 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using PROJET.Data;
 using Microsoft.Extensions.DependencyInjection;
 using PROJET.Models;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
+
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<PROJETContext>(options =>
@@ -37,9 +41,27 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+
+
+
+app.UseRouting();
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+});
+
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    name: "SaveResults",
+    pattern: "/SaveResults",
+    defaults: new { controller = "SaveResults", action = "SaveResults" });
+
+
+
+
+
 app.MapRazorPages();
 using (var serviceScope = app.Services.GetService<IServiceScopeFactory>().CreateScope())
 {
@@ -47,6 +69,8 @@ var context = serviceScope.ServiceProvider.GetRequiredService<PROJETContext>();
     //context.Database.EnsureDeleted();
     context.Database.EnsureCreated();
 }
+
+
 
 
 
