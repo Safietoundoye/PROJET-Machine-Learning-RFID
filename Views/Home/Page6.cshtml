@@ -36,10 +36,7 @@
         <form asp-action="KNNClassifier" method="post">
 
 
-            <label for="hyperparameter5"> <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le paramètre n_neighbors (nombre de voisins) dans l'algorithme des k plus proches voisins (KNN) est un paramètre qui spécifie le nombre de voisins les plus proches à considérer lors de la classification ou de la prédiction d'une nouvelle observation"><span class="animation-text"><h5>N_neighbors</h5></span>  </span> </label> <p> <br> </p>
-            <input type="range" id="hyperparameter5" name="hyperparameter5" min="1" max="10" value="50">
-
-            <label for="hyperparameter1"><h5>N_neighbors</h5> </label> <p> <br> </p>
+            <label for="hyperparameter1">  <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le paramètre n_neighbors (nombre de voisins) dans l'algorithme des k plus proches voisins (KNN) est un paramètre qui spécifie le nombre de voisins les plus proches à considérer lors de la classification ou de la prédiction d'une nouvelle observation"><span class="animation-text"><h5>N_neighbors</h5></span>  </span> </label> <p> <br> </p>
             <input type="range" id="rangeInput" name="hyperparameter1" min="1" max="10" value="1">
             <p id="selectedValue">1</p>
             <p> <br><br> </p>
@@ -47,11 +44,6 @@
             <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le paramètre metric (métrique) dans l'algorithme KNN est un paramètre qui spécifie la mesure de distance utilisée pour calculer la similarité entre les observations lors de la recherche des voisins les plus proches">
                 <span class="animation-text"><h5>Metric</h5> </span>
             </span>
-            <select name="selectedItem">
-                <option value="option1">euclidean</option>
-                <option value="option2">manhattan</option>
-                <option value="option3">chebyshev</option>
-            <h5>Metric</h5>
             <select name="selectedItem1">
                 <option value="euclidean">euclidean</option>
                 <option value="manhattan">manhattan</option>
@@ -63,10 +55,6 @@
             <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le paramètre weights dans l'algorithme KNN est un paramètre qui spécifie comment les voisins sont pris en compte lors du calcul de la prédiction pour une nouvelle observation.Il existe généralement deux options pour le paramètre weights : uniform et distance">
                     <span class="animation-text"><h5>Weights</h5> </span>
                 </span>
-            <select name="selectedItem">
-                <option value="option1">uniform</option>
-                <option value="option2">distance</option>
-            <h5>Weights</h5>
             <select name="selectedItem2">
                 <option value="uniform">uniform</option>
                 <option value="distance">distance</option>
@@ -77,12 +65,6 @@
             <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le paramètre algorithm dans l'algorithme KNN est un paramètre qui spécifie l'algorithme utilisé pour trouver les k voisins les plus proches d'une nouvelle observation.Il existe généralement deux options courantes pour le paramètre algorithm : Brute-force et Ball Tree ou KD Tree ">
                         <span class="animation-text"><h5>Algorithm</h5> </span>
                     </span>
-            <select name="selectedItem">
-                <option value="option1">auto</option>
-                <option value="option2">brute</option>
-                <option value="option3">kd_tree</option>
-                <option value="option3">ball_tree</option>
-            <h5>Algorithm</h5>
             <select name="selectedItem3">
                 <option value="auto">auto</option>
                 <option value="brute">brute</option>
