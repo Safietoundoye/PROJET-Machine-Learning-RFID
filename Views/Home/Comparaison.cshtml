@@ -5,7 +5,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="~/Compare.css">
+    
+   
+    <link rel="stylesheet" type="text/css" href="~/Comparaison.css">
     <script src="~/js/site.js"></script>
     
 </head>
@@ -30,8 +32,8 @@
         <h2> <strong>Veuillez faire votre choix<br>pour procéder à la comparaison</strong></h2>
         <p> <br><br> </p>
 
-        
-           <form id="methodForm" action="parametres.html">
+
+        <form asp-action="" method="post">
 
             <span class="animation-text">
                 <input type="checkbox" name="method" id="methodeAnalytique" value="method1" onclick="updateMethode(this.checked)">
@@ -203,7 +205,7 @@
 
 
                 <div class="btn">
-                <button class="dropbtn" type="submit">Choisir les hyperparamètres</button>
+                <button class="dropbtn" type="submit" onclick="window.location.href='@Url.Action("Comparegraph", "Home")'">Comparer</button>
                 </div>
 
             </form>
