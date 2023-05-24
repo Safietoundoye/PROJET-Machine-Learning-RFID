@@ -1,19 +1,21 @@
-﻿body {
+﻿/*body {
     background-color: burlywood;
     font-family: Arial, sans-serif;
-}
+} */
+
 
 .nomdusite {
     color: wheat;
 }
 
+
 * {
     margin: 0;
-    padding: 10;
+    padding: 0;
     box-sizing: border-box;
 }
 
-.navbar2 {
+.navbar {
     position: fixed;
     top: 0;
     width: 100%;
@@ -24,17 +26,17 @@
     height: 50px;
 }
 
-    .navbar2 ul {
+    .navbar ul {
         margin: 0;
         padding: 0;
         list-style: none;
     }
 
-    .navbar2 li {
+    .navbar li {
         float: left;
     }
 
-        .navbar2 li a {
+        .navbar li a {
             display: block;
             color: white;
             text-align: center;
@@ -44,40 +46,10 @@
             margin-right: 10px;
         }
 
-            .navbar2 li a:hover {
+            .navbar li a:hover {
                 background-color: #111;
             }
 
-
-
-
-
-.btn2 {
-    font-size: 2em;
-    background-color: beige;
-    padding: 10px 0; /* Ajuster la valeur du padding pour contrôler l'espace vertical */
-    display: flex; /* Utiliser flexbox pour aligner les éléments horizontalement */
-    justify-content: center; /* Centrer horizontalement les éléments */
-    margin-top: 20px;
-    text-transform: uppercase;
-    text-decoration: none;
-    letter-spacing: 2px;
-    transition: 0.5s;
-}
-    .btn2:hover {
-        letter-spacing: 4px;
-        text-transform: capitalize;
-    }
-
-.dropbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    margin: 0 5px; /* Ajouter une marge horizontale pour séparer les boutons */
-}
 
 .animation-text {
     color: #000;
@@ -97,4 +69,33 @@
 
 .animation-text {
     animation: color-change 2s ease-in-out infinite;
+}
+
+
+.btn {
+    font-size: 2em;
+    background-color: beige;
+    padding: 10px 0; /* Ajuster la valeur du padding pour contrôler l'espace vertical */
+    display: flex; /* Utiliser flexbox pour aligner les éléments horizontalement */
+    justify-content: center; /* Centrer horizontalement les éléments */
+    margin-top: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition: 0.5s;
+}
+
+    .btn:hover {
+        letter-spacing: 4px;
+        text-transform: capitalize;
+    }
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin: 0 5px; /* Ajouter une marge horizontale pour séparer les boutons */
 }

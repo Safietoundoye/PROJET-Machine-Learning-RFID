@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="~/Page4.css">
-     <script src="~/js/site.js"></script>
+    <script src="~/js/site.js"></script>
 </head>
 
 
@@ -34,25 +34,27 @@
         
 
         <form asp-action="LRClassifier" method="post">
-            <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Un paramètre de réglage (λ), parfois appelé paramètre de pénalité, contrôle la force du terme de pénalité dans la régression ridge et la régression lasso. Il s'agit essentiellement de la quantité de rétrécissement, où les valeurs des données sont rétrécies vers un point central, comme la moyenne"> <span class="animation-text">  <h5>Penalty</h5> </span> </span>
+
+            <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="il s'agit du terme de régularisation qui peut prendre les valeurs l1, l2, elasticnet ou none. La régularisation permet d'éviter le surapprentissage en ajoutant une pénalité sur les coefficients du modèle. La valeur par défaut est l2"> <span class="animation-text">  <h5>Penalty</h5> </span> </span>
             <select name="selectedItem1">
    
             <option value="l1">l1</option>
             <option value="l2">l2</option>
             <option value="elasticnet">elasticnet</option>
             <option value="none">none</option>
+
           </select>
 
             <p> <br><br> </p> 
 
 
-            <label for="hyperparameter1"> <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le paramètre C est inversement proportionnel à la force de régularisation appliquée au modèle. La régularisation vise à prévenir le surajustement (overfitting) en pénalisant les coefficients de régression pour éviter qu'ils prennent des valeurs trop grandes. Le paramètre C contrôle l'inverse de cette pénalité, où une valeur plus élevée de C correspond à une régularisation plus faible, permettant aux coefficients d'avoir des valeurs plus importantes"> <span class="animation-text"><h5>C</h5> </span> </span>  </label>
+            <label for="hyperparameter1"> <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="inverse de la force de régularisation. Plus la valeur de C est faible, plus la régularisation est forte, et inversement. La valeur par défaut est 1.0"> <span class="animation-text"><h5>C</h5> </span> </span>  </label>
              <p> <br> </p > 
             <input type="range" id="rangeInput" name="hyperparameter1" min="0.01" max="10" step="0.01" value="0.01">
             <p id="selectedValue">0.01</p>
              <p> <br> </p>
 
-            <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le solveur est un ensemble d'algorithmes utilisés pour prendre des décisions. Les algorithmes du solveur se composent de générateurs et de chercheurs. Les générateurs produisent des décisions potentielles, puis les chercheurs les examinent pour trouver la meilleure décision dans le délai imparti">
+            <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="  il s'agit de l'algorithme de résolution utilisé pour optimiser les coefficients du modèle. Les choix courants sont newton- cg, lbfgs , liblinear , sag et saga . La valeur par défaut est lbfgs">
                 <span class="animation-text"> <h5>Solver</h5> </span> </span>
             <select name="selectedItem2">
                 <option value="newton-cg">newton-cg</option>
@@ -85,9 +87,6 @@
         rangeInput.addEventListener('input', () => {
             selectedValue.textContent = rangeInput.value;
         });
-
-
-        
 
    </script>
 

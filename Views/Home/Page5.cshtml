@@ -34,7 +34,7 @@
 
 
         <form asp-action="SVCClassifier" method="post">
-            <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le noyau (kernel) dans les machines à vecteurs de support (SVM) est une fonction mathématique qui transforme les données d'entrée dans un espace de dimension supérieure, permettant ainsi de trouver une frontière de décision non linéaire">
+            <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le noyau utilisé pour la transformation des données dans un espace de dimension supérieure. Les noyaux les plus couramment utilisés sont le noyau linéaire, le noyau polynomial et le noyau RBF">
                 <span class="animation-text"> <h5>Kernel</h5> </span> </span>
             <select name="selectedItem1">
                 <option value="linear">linear</option>
@@ -44,7 +44,7 @@
             </select>
             <p> <br><br> </p>
 
-            <label for="hyperparameter1">  <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le paramètre de régularisation (C) : Il nous indique dans quelle mesure nous souhaitons éviter la classification erronée"> <span class="animation-text"><h5>C</h5> </span> </span></label>
+            <label for="hyperparameter1">  <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="C'est un hyperparamètre de régularisation qui contrôle la marge d'erreur. Une valeur plus élevée de C permet au modèle de tolérer moins d'erreurs de classification sur les données d'entraînement. En d'autres termes, une valeur plus élevée de C conduit à une frontière de décision plus complexe et plus flexible, tandis qu'une valeur plus faible de C conduit à une frontière de décision plus simple et moins flexible"><h5>C</h5> </span> </span></label>
             <p> <br> </p>
             <input type="range" id="rangeInput1" name="hyperparameter1" min="0.01" max="10" step="0.01" value="0.01">
             <p id="selectedValue1">0.01</p>
@@ -52,28 +52,28 @@
             <p> <br><br> </p>
             
 
-            <label for="hyperparameter2"> <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le paramètre gamma définit à quel point l'influence d'un seul exemple d'entraînement est importante. Cela signifie que si gamma est élevé, on considérera seulement les points proches de l'hyperplan sinon on considérera les points à plus grande distance"><span class="animation-text"><h5>Gamma</h5> </span>  </span> </label>
+            <label for="hyperparameter2"> <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="C'est un hyperparamètre de régularisation qui contrôle la flexibilité de la frontière de décision. Une valeur plus élevée de gamma conduit à une frontière de décision plus complexe et plus flexible, tandis qu'une valeur plus faible de gamma conduit à une frontière de décision plus simple et moins flexible"><h5>Gamma</h5> </span>  </span> </label>
             <p> <br> </p>
             <input type="range" id="rangeInput2" name="hyperparameter2" min="0.01" max="10" step="0.01" value="0.01">
             <p id="selectedValue2">0.01</p>
 
             <p> <br><br></p>
 
-            <label for="hyperparameter3"><span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le paramètre degree est utilisé lorsque le noyau est défini sur 'poly' (polynomial). Il représente essentiellement le degré du polynôme utilisé pour trouver l'hyperplan qui divise les données"> <span class="animation-text"><h5>Degré</h5> </span></span></label>
+            <label for="hyperparameter3"><span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="C'est un hyperparamètre qui contrôle la puissance de la fonction polynomiale utilisée pour le noyau polynomial. Il est 	utilisé uniquement lorsque le noyau est de type polynomial"> <span class="animation-text"><h5>Degré</h5> </span></span></label>
             <p> <br> </p>
             <input type="range" id="rangeInput3" name="hyperparameter3" min="1" max="3" value="1">
             <p id="selectedValue3">1</p>
             <p> <br><br></p>
 
             <label for="hyperparameter4">
-                <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="coef0 dans les machines à vecteurs de support (SVM) est un paramètre utilisé dans certains noyaux, tels que le noyau polynomial et le noyau sigmoïde. Il définit la contribution de l'influence des termes d'interaction de degré supérieur dans la fonction de décision.Plus précisément, il contrôle l'importance relative des termes de degré supérieur par rapport aux termes de degré inférieur dans la fonction de décision"> <span class="animation-text"><h5>Coef</h5> </span></span>
+                <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="C'est un hyperparamètre utilisé pour le noyau polynomial et le noyau RBF. Il contrôle l'influence relative des termes de degré supérieur et des termes de degré inférieur"> <span class="animation-text"><h5>Coef</h5> </span></span>
             </label>
             <p> <br> </p>
             <input type="range" id="rangeInput4" name="hyperparameter4" min="-1" max="1" value="-1">
             <p id="selectedValue4">-1</p>
             <p> <br><br></p>
 
-            <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le paramètre de tolérance dans les machines à vecteurs de support (SVM) est un paramètre qui contrôle la tolérance acceptable pour la convergence de l'algorithme d'optimisation. Il détermine la précision à laquelle l'optimisation doit être effectuée avant de considérer qu'elle a convergé vers une solution acceptable">
+            <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="C'est un hyperparamètre qui contrôle la tolérance pour la convergence du modèle">
                 <span class="animation-text"><h5>Tolérance</h5> </span>
             </span>
             <select name="selectedItem2">
