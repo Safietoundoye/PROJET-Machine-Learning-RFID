@@ -5,6 +5,7 @@ from MLRFID_Projet_S8_RandomForest import result
 from MLRFID_Projet_S8_RandomForest import RandomForestML
 from MLRFID_Projet_S8_RandomForest import logistic_regression
 from MLRFID_Projet_S8_RandomForest import train_svc_model
+from MLRFID_Projet_S8_RandomForest import knn_classifier
 import pandas as pd
 
 
@@ -47,6 +48,16 @@ def SVCClassifier_route():
     MLSVC = train_svc_model(params3['Hyperparameter1'], float(params3['Hyperparameter2']), float(params3['Hyperparameter3']), int(params3['Hyperparameter4']), int(params3['Hyperparameter5']), float(params3['Hyperparameter6']))
     # Return the prediction as JSON
     return jsonify({'MLSVC': MLSVC})
+
+@app.route('/KNNClassifier', methods=['POST'])
+def KNNClassifier_route():
+    # Charger les DataFrames a partir des fichiers CSV
+    params4 = request.get_json()
+    # Call the predict() function to make a prediction
+    MLKNN = knn_classifier(int(params4['Hyperparameter1']), params4['Hyperparameter2'], params4['Hyperparameter3'], params4['Hyperparameter4'])
+    # Return the prediction as JSON
+    return jsonify({'MLKNN': MLKNN})
+
 
 app.run(host='0.0.0.0', port=5000)
 
