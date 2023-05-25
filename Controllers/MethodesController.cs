@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PROJET.Data;
 using PROJET.Models;
 
 namespace PROJET.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class MethodesController : ControllerBase
+    public class MethodesController : Controller
     {
         private readonly PROJETContext _context;
 
@@ -21,104 +19,145 @@ namespace PROJET.Controllers
             _context = context;
         }
 
-        // GET: api/Methodes
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Methode>>> GetMethode()
+        // GET: Methodes
+        public async Task<IActionResult> Index()
         {
-          if (_context.Methode == null)
-          {
-              return NotFound();
-          }
-            return await _context.Methode.ToListAsync();
+              return _context.Methode != null ? 
+                          View(await _context.Methode.ToListAsync()) :
+                          Problem("Entity set 'PROJETContext.Methode'  is null.");
         }
 
-        // GET: api/Methodes/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Methode>> GetMethode(int id)
+        // GET: Methodes/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
-          if (_context.Methode == null)
-          {
-              return NotFound();
-          }
-            var methode = await _context.Methode.FindAsync(id);
+            if (id == null || _context.Methode == null)
+            {
+                return NotFound();
+            }
 
+            var methode = await _context.Methode
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (methode == null)
             {
                 return NotFound();
             }
 
-            return methode;
+            return View(methode);
         }
 
-        // PUT: api/Methodes/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutMethode(int id, Methode methode)
+        // GET: Methodes/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Methodes/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Id,Nom,NbrHParam")] Methode methode)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(methode);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(methode);
+        }
+
+        // GET: Methodes/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null || _context.Methode == null)
+            {
+                return NotFound();
+            }
+
+            var methode = await _context.Methode.FindAsync(id);
+            if (methode == null)
+            {
+                return NotFound();
+            }
+            return View(methode);
+        }
+
+        // POST: Methodes/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nom,NbrHParam")] Methode methode)
         {
             if (id != methode.Id)
             {
-                return BadRequest();
+                return NotFound();
             }
 
-            _context.Entry(methode).State = EntityState.Modified;
-
-            try
+            if (ModelState.IsValid)
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!MethodeExists(id))
+                try
                 {
-                    return NotFound();
+                    _context.Update(methode);
+                    await _context.SaveChangesAsync();
                 }
-                else
+                catch (DbUpdateConcurrencyException)
                 {
-                    throw;
+                    if (!MethodeExists(methode.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
+                return RedirectToAction(nameof(Index));
             }
-
-            return NoContent();
+            return View(methode);
         }
 
-        // POST: api/Methodes
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Methode>> PostMethode(Methode methode)
+        // GET: Methodes/Delete/5
+        public async Task<IActionResult> Delete(int? id)
         {
-          if (_context.Methode == null)
-          {
-              return Problem("Entity set 'PROJETContext.Methode'  is null.");
-          }
-            _context.Methode.Add(methode);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetMethode", new { id = methode.Id }, methode);
-        }
-
-        // DELETE: api/Methodes/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteMethode(int id)
-        {
-            if (_context.Methode == null)
+            if (id == null || _context.Methode == null)
             {
                 return NotFound();
             }
-            var methode = await _context.Methode.FindAsync(id);
+
+            var methode = await _context.Methode
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (methode == null)
             {
                 return NotFound();
             }
 
-            _context.Methode.Remove(methode);
-            await _context.SaveChangesAsync();
+            return View(methode);
+        }
 
-            return NoContent();
+        // POST: Methodes/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            if (_context.Methode == null)
+            {
+                return Problem("Entity set 'PROJETContext.Methode'  is null.");
+            }
+            var methode = await _context.Methode.FindAsync(id);
+            if (methode != null)
+            {
+                _context.Methode.Remove(methode);
+            }
+            
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
         private bool MethodeExists(int id)
         {
-            return (_context.Methode?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Methode?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
