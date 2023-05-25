@@ -10,15 +10,11 @@
 
 <body>
     <header>
-
-
-            <nav class="navbar2">
-                <ul>
-                    <li> <h1 class="nomdusite"><strong>RFID WEBSITE</strong></h1></li>
-                </ul>
-            </nav>
-        
-                     
+        <nav class="navbar2">
+            <ul>
+                <li> <h1 class="nomdusite"><strong>RFID WEBSITE</strong></h1></li>
+            </ul>
+        </nav>
     </header>
 
     <div class="text-center">
@@ -42,13 +38,14 @@
                 decimal.TryParse(resultObject.analytic.ToString(), out accuracyF);
             }
 
+            string methoValue = ViewBag.Metho?.ToString();
+            string numericValue = System.Text.RegularExpressions.Regex.Replace(methoValue, "[^0-9.]", string.Empty);
+
         }
 
       <span class="animation-text">
         <h3>Result: @Html.Raw(accuracyF)</h3> 
       </span>
-
-
 
         <p> <br><br><br> <br><br><br> </p>
 
@@ -56,10 +53,12 @@
         <div class="btn2">
 
         <form method="post" action="/SaveResults">
-
             <input type="hidden" name="accuracyR" value="@Html.Raw(accuracyF)" />
-            <input type="hidden" name="MethodeId" value="1" />
-
+            <input type="hidden" name="idM" value="@Html.Raw(numericValue)" />
+            <input type="hidden" name="ListHParam[0].Id" value="12" />
+            <input type="hidden" name="ListHParam[0].Value" value="10" />
+            <input type="hidden" name="ListHParam[1].Id" value="5" />
+            <input type="hidden" name="ListHParam[1].Value" value="@Html.Raw(numericValue)" />
 
             <input class="dropbtn" type="submit" name="envoi" value="Sauvegarder" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;">
         </form>

@@ -41,14 +41,14 @@
             <select name="selectedItem1">
                 <option value="linear">linear</option>
                 <option value="poly">poly</option>
-                <option value="rbf">rbf</option>
+                <option value="rbf" selected>rbf</option>
                 <option value="sigmoid">sigmoid</option>
             </select>
             <p> <br><br> </p>
 
             <label for="hyperparameter1">  <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="C'est un hyperparamètre de régularisation qui contrôle la marge d'erreur. Une valeur plus élevée de C permet au modèle de tolérer moins d'erreurs de classification sur les données d'entraînement. En d'autres termes, une valeur plus élevée de C conduit à une frontière de décision plus complexe et plus flexible, tandis qu'une valeur plus faible de C conduit à une frontière de décision plus simple et moins flexible"><h5>C</h5> </span> </span></label>
             <p> <br> </p>
-            <input type="range" id="rangeInput1" name="hyperparameter1" min="0.01" max="10" step="0.01" value="0.01">
+            <input type="range" id="rangeInput1" name="hyperparameter1" min="0.01" max="10" step="0.01" value="1.0">
             <p id="selectedValue1">0.01</p>
 
             <p> <br><br> </p>
@@ -56,14 +56,14 @@
 
             <label for="hyperparameter2"> <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="C'est un hyperparamètre de régularisation qui contrôle la flexibilité de la frontière de décision. Une valeur plus élevée de gamma conduit à une frontière de décision plus complexe et plus flexible, tandis qu'une valeur plus faible de gamma conduit à une frontière de décision plus simple et moins flexible"><h5>Gamma</h5> </span>  </span> </label>
             <p> <br> </p>
-            <input type="range" id="rangeInput2" name="hyperparameter2" min="0.01" max="10" step="0.01" value="0.01">
+            <input type="range" id="rangeInput2" name="hyperparameter2" min="0.01" max="10" step="0.01" value="0.1">
             <p id="selectedValue2">0.01</p>
 
             <p> <br><br></p>
 
             <label for="hyperparameter3"><span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="C'est un hyperparamètre qui contrôle la puissance de la fonction polynomiale utilisée pour le noyau polynomial. Il est 	utilisé uniquement lorsque le noyau est de type polynomial"> <span class="animation-text"><h5>Degré</h5> </span></span></label>
             <p> <br> </p>
-            <input type="range" id="rangeInput3" name="hyperparameter3" min="1" max="3" value="1">
+            <input type="range" id="rangeInput3" name="hyperparameter3" min="1" max="3" value="3">
             <p id="selectedValue3">1</p>
             <p> <br><br></p>
 
@@ -71,7 +71,7 @@
                 <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="C'est un hyperparamètre utilisé pour le noyau polynomial et le noyau RBF. Il contrôle l'influence relative des termes de degré supérieur et des termes de degré inférieur"> <span class="animation-text"><h5>Coef</h5> </span></span>
             </label>
             <p> <br> </p>
-            <input type="range" id="rangeInput4" name="hyperparameter4" min="-1" max="1" value="-1">
+            <input type="range" id="rangeInput4" name="hyperparameter4" min="-1" max="1" value="0.0">
             <p id="selectedValue4">-1</p>
             <p> <br><br></p>
 
@@ -79,7 +79,7 @@
                 <span class="animation-text"><h5>Tolérance</h5> </span>
             </span>
             <select name="selectedItem2">
-                <option value="1e-3">1e-3</option>
+                <option value="1e-3" selected>1e-3</option>
                 <option value="1e-4">1e-4</option>
                 <option value="1e-5">1e-5</option>
             </select>

@@ -29,8 +29,10 @@ namespace PROJET.Controllers
                 var content = new StringContent(JsonConvert.SerializeObject(null), System.Text.Encoding.UTF8, "application/json");
                 var response = await client.PostAsync("http://localhost:5000/analytical", content);
                 var result = await response.Content.ReadAsStringAsync();
+                var meth = "Tabry1";
 
                 ViewBag.Result = result;
+                ViewBag.Metho = meth;
             }
 
             return View("Page2");
@@ -79,6 +81,9 @@ namespace PROJET.Controllers
                 var response = await client.PostAsync("http://localhost:5000/LRClassifier", content);
                 var result2 = await response.Content.ReadAsStringAsync();
 
+                ViewBag.Hyperparameter1 = selectedItem1;
+                ViewBag.Hyperparameter2 = hyperparameter1;
+                ViewBag.Hyperparameter3 = selectedItem2;
                 ViewBag.Result2 = result2;
             }
 
@@ -110,6 +115,12 @@ namespace PROJET.Controllers
                 var response = await client.PostAsync("http://localhost:5000/SVCClassifier", content);
                 var result3 = await response.Content.ReadAsStringAsync();
 
+                ViewBag.Hyperparameter1 = selectedItem1;
+                ViewBag.Hyperparameter2 = hyperparameter1;
+                ViewBag.Hyperparameter3 = hyperparameter2;
+                ViewBag.Hyperparameter4 = hyperparameter3;
+                ViewBag.Hyperparameter5 = hyperparameter4;
+                ViewBag.Hyperparameter6 = selectedItem2;
                 ViewBag.Result3 = result3;
             }
 
@@ -137,6 +148,11 @@ namespace PROJET.Controllers
                 var response = await client.PostAsync("http://localhost:5000/KNNClassifier", content);
                 var result4 = await response.Content.ReadAsStringAsync();
 
+                ViewBag.Hyperparameter1 = hyperparameter1;
+                ViewBag.Hyperparameter2 = selectedItem1;
+                ViewBag.Hyperparameter3 = selectedItem2;
+                ViewBag.Hyperparameter4 = selectedItem3;
+           
                 ViewBag.Result4 = result4;
             }
 
