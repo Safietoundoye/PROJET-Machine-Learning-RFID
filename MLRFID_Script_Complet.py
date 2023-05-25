@@ -273,7 +273,7 @@ def analytical(tags, subslices):
     true_percentage = value_counts[True] / value_counts.sum()*100
 
 # La fonction retourne le poucentage de prédiction vraie
-    return true_percentage
+    return round(true_percentage,6)
 
 def result():
     return analytical(df_timing_slices, timing_slices)
@@ -344,7 +344,7 @@ ds = dataset(df_timing_slices,timing_slices,1)
 # In[23]:
 
 
-ds= ds.sample(n=50000, replace=False)
+ds= ds.sample(n=100000, replace=False)
 
 # y est la colonne refListId_actual
 y = ds['refListId_actual']
@@ -437,7 +437,7 @@ def train_svc_model(kernel, C_marge_er, flexibilite, degree_pol, coeficient, tol
 
     # Évaluer la précision du modèle sur l'ensemble de test
     accuracy = svc.score(X_test, y_test)
-    return round(accuracy,8)
+    return round(accuracy,6)
 
 
 # # Random Forest
@@ -464,7 +464,8 @@ def RandomForestML(nb_arbre, max_profondeur):
     ypred = clf.predict(Xtest_std)
     # renvoie la moyenne de réussite d'identification des boites
     # return (ytest==ypred).mean()
-    return round(accuracy_score(ytest, ypred),6)
+    accuracy=accuracy_score(ytest, ypred)
+    return round(accuracy,6)
 
 
 # # Regression Logistique
@@ -494,7 +495,7 @@ def logistic_regression(régularisation, C, algo_résolution):
     # Évaluer la précision du modèle
     accuracy = logreg.score(X_test, y_test)
 
-    return accuracy
+    return round(accuracy,6)
 
 
 # # Comparaison
