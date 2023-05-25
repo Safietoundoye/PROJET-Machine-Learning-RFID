@@ -2,27 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using PROJET.Data;
 using PROJET.Models;
 
 namespace PROJET.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class SauvegardesController : ControllerBase
+    public class SauvegardesController : Controller
     {
-        //Start New Part 
-
-
-
-
-
-
-        //End New Part
         private readonly PROJETContext _context;
 
         public SauvegardesController(PROJETContext context)
@@ -30,107 +19,145 @@ namespace PROJET.Controllers
             _context = context;
         }
 
-        
-        
-
-        // GET: api/Sauvegardes
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Sauvegarde>>> GetSauvegarde()
+        // GET: Sauvegardes
+        public async Task<IActionResult> Index()
         {
-          if (_context.Sauvegarde == null)
-          {
-              return NotFound();
-          }
-            return await _context.Sauvegarde.ToListAsync();
+              return _context.Sauvegarde != null ? 
+                          View(await _context.Sauvegarde.ToListAsync()) :
+                          Problem("Entity set 'PROJETContext.Sauvegarde'  is null.");
         }
 
-        // GET: api/Sauvegardes/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Sauvegarde>> GetSauvegarde(int id)
+        // GET: Sauvegardes/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
-          if (_context.Sauvegarde == null)
-          {
-              return NotFound();
-          }
-            var sauvegarde = await _context.Sauvegarde.FindAsync(id);
+            if (id == null || _context.Sauvegarde == null)
+            {
+                return NotFound();
+            }
 
+            var sauvegarde = await _context.Sauvegarde
+                .FirstOrDefaultAsync(m => m.IdSauvegarde == id);
             if (sauvegarde == null)
             {
                 return NotFound();
             }
 
-            return sauvegarde;
+            return View(sauvegarde);
         }
 
-        // PUT: api/Sauvegardes/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutSauvegarde(int id, Sauvegarde sauvegarde)
+        // GET: Sauvegardes/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Sauvegardes/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("IdSauvegarde,Accuracy,Heure,methodeId")] Sauvegarde sauvegarde)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(sauvegarde);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(sauvegarde);
+        }
+
+        // GET: Sauvegardes/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null || _context.Sauvegarde == null)
+            {
+                return NotFound();
+            }
+
+            var sauvegarde = await _context.Sauvegarde.FindAsync(id);
+            if (sauvegarde == null)
+            {
+                return NotFound();
+            }
+            return View(sauvegarde);
+        }
+
+        // POST: Sauvegardes/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("IdSauvegarde,Accuracy,Heure,methodeId")] Sauvegarde sauvegarde)
         {
             if (id != sauvegarde.IdSauvegarde)
             {
-                return BadRequest();
+                return NotFound();
             }
 
-            _context.Entry(sauvegarde).State = EntityState.Modified;
-
-            try
+            if (ModelState.IsValid)
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!SauvegardeExists(id))
+                try
                 {
-                    return NotFound();
+                    _context.Update(sauvegarde);
+                    await _context.SaveChangesAsync();
                 }
-                else
+                catch (DbUpdateConcurrencyException)
                 {
-                    throw;
+                    if (!SauvegardeExists(sauvegarde.IdSauvegarde))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
+                return RedirectToAction(nameof(Index));
             }
-
-            return NoContent();
+            return View(sauvegarde);
         }
 
-        // POST: api/Sauvegardes
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Sauvegarde>> PostSauvegarde(Sauvegarde sauvegarde)
+        // GET: Sauvegardes/Delete/5
+        public async Task<IActionResult> Delete(int? id)
         {
-          if (_context.Sauvegarde == null)
-          {
-              return Problem("Entity set 'PROJETContext.Sauvegarde'  is null.");
-          }
-            _context.Sauvegarde.Add(sauvegarde);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetSauvegarde", new { id = sauvegarde.IdSauvegarde }, sauvegarde);
-        }
-
-        // DELETE: api/Sauvegardes/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteSauvegarde(int id)
-        {
-            if (_context.Sauvegarde == null)
+            if (id == null || _context.Sauvegarde == null)
             {
                 return NotFound();
             }
-            var sauvegarde = await _context.Sauvegarde.FindAsync(id);
+
+            var sauvegarde = await _context.Sauvegarde
+                .FirstOrDefaultAsync(m => m.IdSauvegarde == id);
             if (sauvegarde == null)
             {
                 return NotFound();
             }
 
-            _context.Sauvegarde.Remove(sauvegarde);
-            await _context.SaveChangesAsync();
+            return View(sauvegarde);
+        }
 
-            return NoContent();
+        // POST: Sauvegardes/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            if (_context.Sauvegarde == null)
+            {
+                return Problem("Entity set 'PROJETContext.Sauvegarde'  is null.");
+            }
+            var sauvegarde = await _context.Sauvegarde.FindAsync(id);
+            if (sauvegarde != null)
+            {
+                _context.Sauvegarde.Remove(sauvegarde);
+            }
+            
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
         private bool SauvegardeExists(int id)
         {
-            return (_context.Sauvegarde?.Any(e => e.IdSauvegarde == id)).GetValueOrDefault();
+          return (_context.Sauvegarde?.Any(e => e.IdSauvegarde == id)).GetValueOrDefault();
         }
     }
 }
