@@ -58,6 +58,10 @@ app.MapControllerRoute(
     pattern: "/SaveResults",
     defaults: new { controller = "SaveResults", action = "SaveResults" });
 
+app.MapControllerRoute(
+    name: "SaveResults2",
+    pattern: "/SaveResults2",
+    defaults: new { controller = "SaveResults2", action = "SaveResults2" });
 
 
 

@@ -14,111 +14,57 @@ namespace PROJET.Controllers
     [ApiController]
     public class Histo_HparamController : ControllerBase
     {
-        private readonly PROJETContext _context;
+        private readonly PROJETContext _dbContext;
 
         public Histo_HparamController(PROJETContext context)
         {
-            _context = context;
+            _dbContext = context;
         }
 
+        /*
         // GET: api/Histo_Hparam
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Histo_Hparam>>> GetHisto_Hparam()
-        {
-          if (_context.Histo_Hparam == null)
-          {
-              return NotFound();
-          }
-            return await _context.Histo_Hparam.ToListAsync();
-        }
-
-        // GET: api/Histo_Hparam/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Histo_Hparam>> GetHisto_Hparam(int id)
-        {
-          if (_context.Histo_Hparam == null)
-          {
-              return NotFound();
-          }
-            var histo_Hparam = await _context.Histo_Hparam.FindAsync(id);
-
-            if (histo_Hparam == null)
-            {
-                return NotFound();
-            }
-
-            return histo_Hparam;
-        }
-
-        // PUT: api/Histo_Hparam/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutHisto_Hparam(int id, Histo_Hparam histo_Hparam)
-        {
-            if (id != histo_Hparam.IdHParam)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(histo_Hparam).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!Histo_HparamExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Histo_Hparam
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Histo_Hparam>> PostHisto_Hparam(Histo_Hparam histo_Hparam)
+        public IActionResult SaveResults(Histo_Hparam model)
         {
-          if (_context.Histo_Hparam == null)
-          {
-              return Problem("Entity set 'PROJETContext.Histo_Hparam'  is null.");
-          }
-            _context.Histo_Hparam.Add(histo_Hparam);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetHisto_Hparam", new { id = histo_Hparam.IdHParam }, histo_Hparam);
-        }
-
-        // DELETE: api/Histo_Hparam/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteHisto_Hparam(int id)
-        {
-            if (_context.Histo_Hparam == null)
+            if (int.TryParse(Request.Form["Hparam1"], out int hParamL))
             {
-                return NotFound();
-            }
-            var histo_Hparam = await _context.Histo_Hparam.FindAsync(id);
-            if (histo_Hparam == null)
-            {
-                return NotFound();
+                // Assign the value of accuracyR to accuracy
+                model.IdHParam = hParamL;
             }
 
-            _context.Histo_Hparam.Remove(histo_Hparam);
-            await _context.SaveChangesAsync();
+            // Get the last generated IdSauvegarde
+            int lastIdSauvegarde = _dbContext.Sauvegarde.OrderByDescending(s => s.IdSauvegarde).Select(s => s.IdSauvegarde).FirstOrDefault();
 
-            return NoContent();
-        }
+            // Increment the IdSauvegarde by 1
+            int newIdSauvegarde = lastIdSauvegarde + 1;
 
-        private bool Histo_HparamExists(int id)
-        {
-            return (_context.Histo_Hparam?.Any(e => e.IdHParam == id)).GetValueOrDefault();
-        }
+            // Create an instance of Histo_Hparam entity
+            var histoHparam = new Histo_Hparam
+            {
+                IdSauvegarde = newIdSauvegarde,
+                IdHParam = model.IdHParam,
+                SelectedValue = model.SelectedValue
+            };
+
+            // Add the histoHparam entity to the DbSet of your context
+            _dbContext.Histo_Hparam.Add(histoHparam);
+
+            // Save changes to the database
+            _dbContext.SaveChanges();
+
+            DateTime currentTime = DateTime.Now;
+            // Create a string representation of the data
+            string data = $"\nHParam IdSauvegarde: {newIdSauvegarde}\nTime: {currentTime}\n________\n";
+            // Save the data to a .txt file
+            string filePath = "C:\\Users\\cafes\\Documents\\Visual Studio 2022\\SaveResultsFile.txt"; // Provide the actual file path
+            using (StreamWriter writer = new StreamWriter(filePath, true))
+            {
+                writer.WriteLine(data);
+            }
+
+
+            // Redirect back to the homepage or any other page
+            return RedirectToAction("Index", "Home");
+        }*/
     }
 }
