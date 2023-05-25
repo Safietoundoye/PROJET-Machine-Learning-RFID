@@ -79,3 +79,22 @@
     margin: 0 5px; /* Ajouter une marge horizontale pour séparer les boutons */
 }
 
+.animation-text {
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+@keyframes color-change {
+    0% {
+        color: black;
+    }
+
+    100% {
+        color: #ff0000;
+    }
+}
+
+.animation-text {
+    animation: color-change 2s ease-in-out infinite;
+}

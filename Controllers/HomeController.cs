@@ -224,7 +224,19 @@ namespace PROJET.Controllers
 
         }
 
-        
+  
+        public IActionResult Comparegraph()
+        {
+            return View();
+
+        }
+
+        public IActionResult Historique()
+        {
+            return View();
+
+        }
+
         [HttpPost]
         public IActionResult Hyperparameter(Hyperparamètres model)
         {
