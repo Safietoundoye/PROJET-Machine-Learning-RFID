@@ -6,17 +6,20 @@ namespace PROJET.Models
     public class Histo_Hparam
     {
         [Key]
-        [ForeignKey("Hyperparamètres")] 
-        public int IdHParam { get; set; }
-        
+        public int IdHisto_HParam { get; set; }
 
-        public virtual Hyperparamètres?Hyperparams { get; set; }
         [ForeignKey("Sauvegarde")]
         public int IdSauvegarde { get; set; }
-        
-        public virtual Sauvegarde?Sauvegardes{ get; set; }
 
+        [ForeignKey("Hyperparamètres")]
+        public int IdHParam { get; set; }
 
+        [Required]
+        [StringLength(255)]
+        public string SelectedValue { get; set; }
 
+        public virtual Sauvegarde Sauvegarde { get; set; }
+
+        public virtual Hyperparamètres Hyperparamètres { get; set; }
     }
 }

@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Page 3";
+    ViewData["Title"] = "ResultMethode2";
 }
 
 <head>
@@ -30,23 +30,46 @@
 
         <h2> <strong>Voici le résultat obtenu<br> avec la méthode logistic regression</strong></h2>
 
-      <span class="animation-text">  <h3>Result: @Html.Raw(ViewBag.Result2)</h3></span>
+        @{
+            string resultJson = ViewBag.Result2;
+            decimal accuracyF = 0;
+            if (!string.IsNullOrEmpty(resultJson))
+            {
+                dynamic resultObject = Newtonsoft.Json.JsonConvert.DeserializeObject(resultJson);
+                if (resultObject != null)
+                {
+                    if (resultObject.MLLR != null)
+                    {
+                        decimal.TryParse(resultObject.MLLR.ToString(), out accuracyF);
+                    }
+                }
+            }
+            string accuracyString = accuracyF.ToString("0.##############").Replace(".", ",");
+        }
+
+
+
+        <span class="animation-text">   <h3>Result: @Html.Raw(ViewBag.Result2) but Accuracy: @accuracyString</h3></span>
 
 
         <p> <br><br><br> <br><br><br> </p>
 
 
         <div class="btn">
+            <form method="post" action="/SaveResults">
+                <input type="hidden" name="accuracyR" value="@accuracyString" />
+                <input type="hidden" name="idM" value="3" />
+                <input type="hidden" name="ListHParam[0].Id" value="3" />
+                <input type="hidden" name="ListHParam[0].Value" value="@Html.Raw(ViewBag.Hyperparameter1)" />
+                <input type="hidden" name="ListHParam[1].Id" value="4" />
+                <input type="hidden" name="ListHParam[1].Value" value="@Html.Raw(ViewBag.Hyperparameter2)" />
+                <input type="hidden" name="ListHParam[2].Id" value="5" />
+                <input type="hidden" name="ListHParam[2].Value" value="@Html.Raw(ViewBag.Hyperparameter3)" />
 
-
-
-            <input class="dropbtn" type="submit" name="envoi" value="Sauvegarder" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;">
-
-
+                <input class="dropbtn" type="submit" name="envoi" value="Sauvegarder" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;">
+            </form>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-            <input class="dropbtn" type="submit" name="envoi" value="Retour" onclick="window.location.href='@Url.Action("Page4", "Home")'" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;">
-
+            <input class="dropbtn" type="submit" name="envoi" value="Retour" onclick="window.location.href='@Url.Action("Page3", "Home")'" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;">
         </div>
 
         <p><br></p>
