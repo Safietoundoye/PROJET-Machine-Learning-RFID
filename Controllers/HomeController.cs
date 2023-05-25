@@ -228,11 +228,7 @@ namespace PROJET.Controllers
 
         }
 
-        public IActionResult Historique()
-        {
-            return View();
-
-        }
+       
 
         [HttpPost]
         public IActionResult Hyperparameter(Hyperparamètres model)
