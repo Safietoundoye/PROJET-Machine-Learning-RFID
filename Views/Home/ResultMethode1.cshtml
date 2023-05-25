@@ -40,15 +40,7 @@
         <span class="animation-text"><h3>Result: @Html.Raw(ViewBag.Result1)</h3></span>
 
 
-        @{
-            string resultJson = ViewBag.Result1?.ToString();
-            decimal accuracyF = 0;
-            if (!string.IsNullOrEmpty(resultJson))
-            {
-                dynamic resultObject = Newtonsoft.Json.JsonConvert.DeserializeObject(resultJson);
-                decimal.TryParse(resultObject.analytic.ToString(), out accuracyF);
-            }
-        }
+
 
         <p> <br><br><br> <br><br><br> </p>
 
@@ -60,7 +52,7 @@
 
                 <input type="hidden" name="HParam1" value="1" />
 
-                <input type="hidden" name="accuracyR" value="@Html.Raw(accuracyF)" />
+                <input type="hidden" name="accuracyR" value="2" />
                 <input type="hidden" name="MethodeId" value="2" />
 
 
