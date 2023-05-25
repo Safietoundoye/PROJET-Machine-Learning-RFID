@@ -344,7 +344,7 @@ ds = dataset(df_timing_slices,timing_slices,1)
 # In[23]:
 
 
-ds= ds.sample(n=100000, replace=False)
+ds= ds.sample(n=50000, replace=False)
 
 # y est la colonne refListId_actual
 y = ds['refListId_actual']

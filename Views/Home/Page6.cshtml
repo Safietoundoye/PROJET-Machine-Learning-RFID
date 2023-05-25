@@ -38,7 +38,7 @@
         <form asp-action="KNNClassifier" method="post">
 
             <label for="hyperparameter1">  <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le paramètre n_neighbors (nombre de voisins) dans l'algorithme des k plus proches voisins (KNN) est un paramètre qui spécifie le nombre de voisins les plus proches à considérer lors de la classification ou de la prédiction d'une nouvelle observation"><span class="animation-text"><h5>N_neighbors</h5></span>  </span> </label> <p> <br> </p>
-            <input type="range" id="rangeInput" name="hyperparameter1" min="1" max="10" value="1">
+            <input type="range" id="rangeInput" name="hyperparameter1" min="1" max="10" value="5">
             <p id="selectedValue">1</p>
             <p> <br><br> </p>
 
@@ -47,7 +47,7 @@
             </span>
             <select name="selectedItem1">
                 <option value="euclidean">euclidean</option>
-                <option value="manhattan">manhattan</option>
+                <option value="manhattan" selected>manhattan</option>
                 <option value="chebyshev">chebyshev</option>
                
             </select>
@@ -58,7 +58,7 @@
                 </span>
             <select name="selectedItem2">
                 <option value="uniform">uniform</option>
-                <option value="distance">distance</option>
+                <option value="distance" selected>distance</option>
                
             </select>
             <p> <br><br> </p>
@@ -71,7 +71,7 @@
                         <span class="animation-text"><h5>Algorithm</h5> </span>
                     </span>
             <select name="selectedItem3">
-                <option value="auto">auto</option>
+                <option value="auto" selected>auto</option>
                 <option value="brute">brute</option>
                 <option value="kd_tree">kd_tree</option>
                 <option value="ball_tree">ball_tree</option>
