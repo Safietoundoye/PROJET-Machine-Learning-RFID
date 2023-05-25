@@ -17,6 +17,7 @@ namespace PROJET.Controllers
         }
 
         [HttpPost]
+        //POST
         public IActionResult SaveResults(SaveResultsModel model)
         {
             DateTime currentTime = DateTime.Now;
