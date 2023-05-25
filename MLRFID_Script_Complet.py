@@ -464,7 +464,7 @@ def RandomForestML(nb_arbre, max_profondeur):
     ypred = clf.predict(Xtest_std)
     # renvoie la moyenne de réussite d'identification des boites
     # return (ytest==ypred).mean()
-    return accuracy_score(ytest, ypred)
+    return round(accuracy_score(ytest, ypred),6)
 
 
 # # Regression Logistique

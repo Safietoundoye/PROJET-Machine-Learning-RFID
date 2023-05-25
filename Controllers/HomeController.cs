@@ -6,6 +6,8 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Scripting.Hosting;
 using PROJET.Data;
+using Microsoft.EntityFrameworkCore;
+using PROJET;
 
 namespace PROJET.Controllers
 {
@@ -141,15 +143,10 @@ namespace PROJET.Controllers
             return View("ResultMethode4");
         }
 
-        [HttpPost]
-        public ActionResult Historique()
-        {
-            using (var context = new PROJETContext())
-            {
-                var Sauvegardes = context.Sauvegarde.ToList();
-                return View(Sauvegardes);
-            }
-        }
+       
+
+        
+
 
 
         public IActionResult Index()
