@@ -148,6 +148,11 @@ namespace PROJET.Controllers
                 var response = await client.PostAsync("http://localhost:5000/KNNClassifier", content);
                 var result4 = await response.Content.ReadAsStringAsync();
 
+                ViewBag.Hyperparameter1 = hyperparameter1;
+                ViewBag.Hyperparameter2 = selectedItem1;
+                ViewBag.Hyperparameter3 = selectedItem2;
+                ViewBag.Hyperparameter4 = selectedItem3;
+           
                 ViewBag.Result4 = result4;
             }
 
