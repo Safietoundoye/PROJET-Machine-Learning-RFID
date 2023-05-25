@@ -6,7 +6,9 @@
 
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="~/Page3.css">
-    <script src="~/js/site.js"></script>
+    
+    <script src="~/JavaScript.js"></script>
+
 </head>
 
 <body>
@@ -33,13 +35,13 @@
      
         <form asp-action="RFClassifier" method="post">
            
-            <label for="hyperparameter1"><strong> <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le paramètre n_estimators spécifie le nombre d'arbres dans la forêt du modèle. La valeur par défaut de ce paramètre est 10, ce qui signifie que 10 arbres de décision différents seront construits dans la forêt aléatoire"> <span class="animation-text"> <h5>n_estimators</h5> </span> </span></strong> </label>
+            <label for="hyperparameter1"><strong> <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="-n_estimators : est le nombre d'arbres de décision dans la forêt aléatoire. Controle la complexité et sa performance.Plus on augmente plus temps de calcul long et risque de surapprentissage"> <span class="animation-text"> <h5>n_estimators</h5> </span> </span></strong> </label>
             <input type="range" id="hyperparameter1" name="hyperparameter1" min="50" max="200" value="50">
             <p id="rangeValue">50</p>
             <p> <br> </p>
             
 
-            <label for="hyperparameter2"> <strong><span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="max depth est le nombre de divisions que chaque arbre de décision est autorisé à effectuer. Si le nombre de divisions est trop faible, le modèle sous-apprend les données, et s'il est trop élevé, le modèle surapprend"> <span class="animation-text"><h5>max_depth </h5> </span> </span> </strong> </label>
+            <label for="hyperparameter2"> <strong><span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="max depth eest la profondeur maximale de chaque arbre de décision dans la forêt. Il contrôle la complexité de chaque arbre individuel dans la forêt. max_depth plus grand capture plus de relations complexes entre les variables d'entrée, mais augmente le risque de surapprentissage et réduit la capacité de généralisation"><span class="animation-text"> <h5>max_depth </h5> </span> </span> </strong> </label>
             <input type="range" id="hyperparameter2" name="hyperparameter2" min="5" max="15" value="5">
             <p id="rangeValue2">5</p>
             <p><br></p>

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<PROJET.Models.Sauvegarde>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="Pageindex.css">
+
+</head>
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Accuracy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Heure)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Accuracy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Heure)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdSauvegarde">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdSauvegarde">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdSauvegarde">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

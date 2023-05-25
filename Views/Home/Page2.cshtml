@@ -18,10 +18,16 @@
     </header>
 
     <div class="text-center">
-        <h1 class="display-4 animate__animated animate__bounceIn"><u>Méthode analytique</u></h1>
+
+
+        <span class="animation-text"> <h2 class="display-4 animate__animated animate__bounceIn"><u>Méthode analytique</u></h2> </span>
+        
+
         <p> <br><br></p>
 
         <h2> <strong>Voici le résultat obtenu<br> à la suite de ce test</strong></h2>
+
+      
 
         @{
             string resultJson = ViewBag.Result?.ToString();
@@ -34,12 +40,17 @@
 
             string methoValue = ViewBag.Metho?.ToString();
             string numericValue = System.Text.RegularExpressions.Regex.Replace(methoValue, "[^0-9.]", string.Empty);
+
         }
 
-
-        <h3>Result: @Html.Raw(accuracyF)</h3>
+      <span class="animation-text">
+        <h3>Result: @Html.Raw(accuracyF)</h3> 
+      </span>
 
         <p> <br><br><br> <br><br><br> </p>
+
+
+        <div class="btn2">
 
         <form method="post" action="/SaveResults">
             <input type="hidden" name="accuracyR" value="@Html.Raw(accuracyF)" />
@@ -52,8 +63,17 @@
             <input class="dropbtn" type="submit" name="envoi" value="Sauvegarder" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;">
         </form>
 
-        <br>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
+        
         <input class="dropbtn" type="button" name="retour" value="Retour" onclick="window.location.href='@Url.Action("Index", "Home")'" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;">
-    </div>
+        
+
+      </div>
+
+   </div>
+
+
+
 </body>

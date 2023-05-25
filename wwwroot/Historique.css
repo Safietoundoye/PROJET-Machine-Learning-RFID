@@ -1,8 +1,8 @@
-﻿/*body {
-    background-color: burlywood;
-    font-family: Arial, sans-serif;
-} */
-
+﻿body {
+    background-image: url("css/picture2.png");
+    background-repeat: repeat-y;
+    background-size: 20%;
+} 
 
 .nomdusite {
     color: wheat;
@@ -49,6 +49,5 @@
             .navbar li a:hover {
                 background-color: #111;
             }
-
 
 

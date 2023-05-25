@@ -5,7 +5,9 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Scripting.Hosting;
-using System.Drawing;
+using PROJET.Data;
+using Microsoft.EntityFrameworkCore;
+using PROJET;
 
 namespace PROJET.Controllers
 {
@@ -152,6 +154,11 @@ namespace PROJET.Controllers
             return View("ResultMethode4");
         }
 
+       
+
+        
+
+
 
         public IActionResult Index()
         {
@@ -225,7 +232,19 @@ namespace PROJET.Controllers
 
         }
 
-        
+  
+        public IActionResult Comparegraph()
+        {
+            return View();
+
+        }
+
+        public IActionResult Historique()
+        {
+            return View();
+
+        }
+
         [HttpPost]
         public IActionResult Hyperparameter(Hyperparamètres model)
         {
