@@ -13,7 +13,6 @@
 
 <body>
     <header>
-
         <nav class="navbar5">
             <ul>
                 <li> <h1 class="nomdusite"><strong>RFID WEBSITE</strong></h1></li>
@@ -21,12 +20,13 @@
 
             </ul>
         </nav>
-
-    </header>
-  
+    </header> 
 
     <div class="text-center">
-        <h1 class="display-4"><u>K NEAREST-NEIGHBORS</u></h1>
+        <span class="animation-text">
+            <h1 class="display-4"><u>K NEAREST-NEIGHBORS</u></h1>
+        </span>
+
         <p> <br><br></p>
 
         <h2> <strong>Veuillez choisir vos hyperparamétres</strong></h2>
@@ -36,7 +36,6 @@
 
 
         <form asp-action="KNNClassifier" method="post">
-
 
             <label for="hyperparameter1">  <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le paramètre n_neighbors (nombre de voisins) dans l'algorithme des k plus proches voisins (KNN) est un paramètre qui spécifie le nombre de voisins les plus proches à considérer lors de la classification ou de la prédiction d'une nouvelle observation"><span class="animation-text"><h5>N_neighbors</h5></span>  </span> </label> <p> <br> </p>
             <input type="range" id="rangeInput" name="hyperparameter1" min="1" max="10" value="1">
